@@ -43,7 +43,20 @@ public class TraceryRecursion {
 			/*
 			* START: TO DO #2
 			*/
-	
+			for (String line : lines) {
+				String[] rules = new String(line).split(":");
+				String key = new String(rules[0]);
+
+				String expansion = new String(rules[1]);
+				String[] rule = new String(expansion).split(",");
+				Rule[] foo = new Rule[rule.length];
+
+				for (int i = 0; i < foo.length; i++) {
+					foo[i] = new Rule(rule[i]);
+				}
+
+				grammar.put(key, foo);
+			}
 			/*
 			* END: TO DO #2
 			*/
@@ -74,7 +87,27 @@ public class TraceryRecursion {
 		/*
 		* START: TO DO #1
 		*/
+		switch (args.length) {
 
+			case 0:
+				break;
+			case 1:
+			if (args[0].length() > 0) {
+				grammarFile = args[0];
+			}
+
+			if (args[1].length() > 0) {
+				startSymbol = args[1];
+			}
+
+			if (args[2].length() > 0) {
+				count = Integer.parseInt(args[2]);
+			}
+
+			if (args[3].length() > 0) {
+				seed = Long.parseLong(args[3]);
+			}
+		}
 		/*
 		* END: TO DO #1
 		*/
