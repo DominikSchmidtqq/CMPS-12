@@ -27,7 +27,16 @@ public class Rule {
     /*
     * START: TO DO #3
     */
-
+    String[] results = new String[sections.length];
+    for (int i = 0; i < sections.length; i++) {
+      if (i%2 == 0) {
+        results[i] = sections[i];
+      }
+      else if (i%2 != 0) {
+        //Rule selectedExpansion = grammar.get()
+        results[i] = selectedExpansion;
+      }
+    }
     return "[" + raw + "]";
     /*
     * END: TO DO #3
