@@ -37,6 +37,7 @@ public class Rule {
         results[i] = selectedExpansion;
       }
     }
+    raw = String.join("",results);
     return "[" + raw + "]";
     /*
     * END: TO DO #3
