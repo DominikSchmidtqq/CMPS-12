@@ -33,11 +33,11 @@ public class Rule {
         results[i] = sections[i];
       }
       else if (i%2 != 0) {
-        //Rule selectedExpansion = grammar.get()
-        results[i] = selectedExpansion;
+        Rule selectedExpansion = new Rule(sections[i].expand(grammar));
+        results[i] = selectedExpansion.sections[random.nextInt(selectedExpansion.sections.length)].expand(grammar);
       }
     }
-    raw = String.join("",results);
+    return String.join("",results);
     return "[" + raw + "]";
     /*
     * END: TO DO #3
