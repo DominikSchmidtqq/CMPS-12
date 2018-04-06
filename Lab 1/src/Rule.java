@@ -39,7 +39,7 @@ public class Rule {
           Rule selectedExpansion = exArray[random.nextInt(exArray.length)];
 
           results[i] = selectedExpansion.expand(grammar);
-        } 
+        }
       }
     }
     return String.join("",results);
