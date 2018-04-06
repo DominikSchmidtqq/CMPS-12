@@ -33,12 +33,17 @@ public class Rule {
         results[i] = sections[i];
       }
       else if (i%2 != 0) {
-        Rule selectedExpansion = new Rule(sections[i].expand(grammar));
-        results[i] = selectedExpansion.sections[random.nextInt(selectedExpansion.sections.length)].expand(grammar);
+        if (grammar.containsKey(sections[i])) {
+          Rule[] exArray = new Rule[sections.length];
+          exArray = grammar.get(sections[i]);
+          Rule selectedExpansion = exArray[random.nextInt(exArray.length)];
+
+          results[i] = selectedExpansion.expand(grammar);
+        } 
       }
     }
     return String.join("",results);
-    return "[" + raw + "]";
+    //return "[" + raw + "]";
     /*
     * END: TO DO #3
     */

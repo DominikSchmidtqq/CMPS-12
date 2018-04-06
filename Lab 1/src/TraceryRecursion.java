@@ -87,25 +87,48 @@ public class TraceryRecursion {
 		/*
 		* START: TO DO #1
 		*/
-		switch (args.length) {
-
-			case 0:
-				break;
-			case 1:
-			if (args[0].length() > 0) {
-				grammarFile = args[0];
+		 if (args.length > 0) {
+			if(args.length ==1 ) {
+				if (args[0].length() > 0) {
+					grammarFile = args[0];
+				}
 			}
+			else if (args.length == 2) {
+				if (args[0].length() > 0) {
+					grammarFile = args[0];
+				}
+				if (args[1].length() > 0) {
 
-			if (args[1].length() > 0) {
-				startSymbol = args[1];
+					startSymbol = args[1];
+				}
 			}
+			else if (args.length == 3) {
+				if (args[0].length() > 0) {
+					grammarFile = args[0];
+				}
+				if (args[1].length() > 0) {
 
-			if (args[2].length() > 0) {
-				count = Integer.parseInt(args[2]);
+					startSymbol = args[1];
+				}
+				if (args[2].length() > 0) {
+
+					count = Integer.parseInt(args[2]);
+				}
 			}
+			else if(args.length == 4) {
+				if (args[0].length() > 0) {
+					grammarFile = args[0];
+				}
+				if (args[1].length() > 0) {
 
-			if (args[3].length() > 0) {
-				seed = Long.parseLong(args[3]);
+					startSymbol = args[1];
+				}
+				if (args[2].length() > 0) {
+					count = Integer.parseInt(args[2]);
+				}
+				if (args[3].length() > 0) {
+					seed = Long.parseLong(args[3]);
+				}
 			}
 		}
 		/*
