@@ -2,7 +2,7 @@ ball:Soccer Ball,Baseball,Basketball
 size:big,small,tiny,huge,enormous
 color:orange,pink,purple
 brand:Adidas,Nike,Puma,Rawlings,Kappa
-character:the #size# #brand# #ball
+character:#adjective# #brand# #ball
 place:fence,net
-adjective:#size#,#color#
+adjective:#size#,#color#,
 origin:once the #character# and the #character# flew over the #place#
