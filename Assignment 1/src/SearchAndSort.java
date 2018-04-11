@@ -56,7 +56,35 @@ public class SearchAndSort {
 	* START TODO #2: "mergeSort"
 	*/
 	public static void mergeSort(String[] arrayToSort, String[] tempArray, int first, int last) {
+		if (first < last) {
+			int middleIndex = first + (last - first)/2;
 
+			mergeSort(arrayToSort,tempArray,first,middleIndex);
+			mergeSort(arrayToSort,tempArray,middleIndex + 1, last);
+
+			for (int i = 0; i <= last; i++) {
+				tempArray[i] = arrayToSort[i];
+			}
+			int one = first;
+			int temp = first;
+			int mid = middleIndex + 1;
+
+			while (first <= middleIndex && (middleIndex + 1) <= last) {
+				if ((tempArray[one].compareTo(tempArray[mid])) <= 0) {
+					arrayToSort[temp] = tempArray[one];
+					one++;
+				} else {
+					arrayToSort[last] = tempArray[mid];
+					mid++;
+				}
+				temp++;
+			}
+			while (one <= middleIndex) {
+				arrayToSort[first] = tempArray[one];
+				one++;
+				temp++;
+			}
+		}
 	}
 	/*
 	* END TODO #2: "mergeSort"
@@ -70,15 +98,15 @@ public class SearchAndSort {
 	* START TODO #3: binary search
 	*/
 	public static int binarySearch(String[] sortedWords, String query, int startIndex, int endIndex) {
-		
+		return -1;
 	}
 
 	public static int getSmallestIndex(String[] words, String query, int startIndex, int endIndex) {
-
+		return -1;
 	}
 
 	public int getLargestIndex(String[] words, String query, int startIndex, int endIndex) {
-
+		return -1;
 	}
 	/*
 	* END TODO #3: binary search
