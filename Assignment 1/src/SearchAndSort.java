@@ -104,7 +104,7 @@ public class SearchAndSort {
 				* 	START: TODO #1
 				*/
 
-				int count = 0; // Replace the 0 in this line of code with the call to countWordsInUnsorted once you've written it
+				int count = countWordsInUnsorted(allWords, queryWords[i]); // Replace the 0 in this line of code with the call to countWordsInUnsorted once you've written it
 				/*
 				* 	END: TODO #1
 				* ========================================================================
@@ -199,6 +199,16 @@ public class SearchAndSort {
 
 		long timeToSeachBinary = t3 - t2;
 		System.out.printf("%d ms for %d searches, %f ms per search\n", timeToSeachBinary, searchCount, timeToSeachBinary*1.0f/searchCount);
+	}
+
+	static int countWordsInUnsorted(String[] words, String query) {
+		int counter = 0;
+		for (int i = 0; i < words.length; i++) {
+			if (words[i].equals(query)) {
+				counter++;
+			}
+		}
+		return counter;
 	}
 
 
