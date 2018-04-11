@@ -35,7 +35,15 @@ public class SearchAndSort {
 	* ========================================================================
 	* START TODO #1: "countWordsInUnsorted"
 	*/
-
+	public static int countWordsInUnsorted(String[] words, String query) {
+		int counter = 0;
+		for (int i = 0; i < words.length; i++) {
+			if (words[i].equals(query)) {
+				counter++;
+			}
+		}
+		return counter;
+	}
 	/*
 	* END TODO #1: "countWordsInUnsorted"
 	* ========================================================================
@@ -47,7 +55,9 @@ public class SearchAndSort {
 	* ========================================================================
 	* START TODO #2: "mergeSort"
 	*/
+	public static void mergeSort(String[] arrayToSort, String[] tempArray, int first, int last) {
 
+	}
 	/*
 	* END TODO #2: "mergeSort"
 	* ========================================================================
@@ -59,7 +69,17 @@ public class SearchAndSort {
 	* ========================================================================
 	* START TODO #3: binary search
 	*/
-	
+	public static int binarySearch(String[] sortedWords, String query, int startIndex, int endIndex) {
+		
+	}
+
+	public static int getSmallestIndex(String[] words, String query, int startIndex, int endIndex) {
+
+	}
+
+	public int getLargestIndex(String[] words, String query, int startIndex, int endIndex) {
+
+	}
 	/*
 	* END TODO #3: binary search
 	* ========================================================================
@@ -134,7 +154,7 @@ public class SearchAndSort {
 		* ========================================================================
 		* 	START: TODO #2
 		*/
-
+		mergeSort(allWords, new String[allWords.length], 0, allWords.length);
 		// Put your call to mergeSort here to sort allWords.
 		
 		/*
@@ -200,16 +220,4 @@ public class SearchAndSort {
 		long timeToSeachBinary = t3 - t2;
 		System.out.printf("%d ms for %d searches, %f ms per search\n", timeToSeachBinary, searchCount, timeToSeachBinary*1.0f/searchCount);
 	}
-
-	static int countWordsInUnsorted(String[] words, String query) {
-		int counter = 0;
-		for (int i = 0; i < words.length; i++) {
-			if (words[i].equals(query)) {
-				counter++;
-			}
-		}
-		return counter;
-	}
-
-
 }
