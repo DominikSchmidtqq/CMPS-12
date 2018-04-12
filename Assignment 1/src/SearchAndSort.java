@@ -115,6 +115,7 @@ public class SearchAndSort {
 		} else {
 			binarySearch(sortedWords, query, startIndex, middle - 1);
 		}
+		return middle;
 	}
 
 	public static int getSmallestIndex(String[] words, String query, int startIndex, int endIndex) {
