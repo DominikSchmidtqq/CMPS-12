@@ -18,11 +18,11 @@
       <file leaf-file-name="SearchAndSort.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SearchAndSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-220">
-              <caret line="88" column="17" lean-forward="false" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
+            <state relative-caret-position="-50">
+              <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
               <folding>
-                <element signature="e#2644#2645#0" expanded="true" />
-                <element signature="e#2660#2661#0" expanded="true" />
+                <element signature="e#2556#2557#0" expanded="true" />
+                <element signature="e#2572#2573#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -217,12 +217,12 @@
       <workItem from="1523407913000" duration="43000" />
       <workItem from="1523420631508" duration="2882000" />
       <workItem from="1523429964885" duration="2115000" />
-      <workItem from="1523504561740" duration="4315000" />
+      <workItem from="1523504561740" duration="4966000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10218000" />
+    <option name="totallyTimeSpent" value="10869000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-5" y="0" width="811" height="866" extended-state="0" />
@@ -281,8 +281,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2644#2645#0" expanded="true" />
-            <element signature="e#2660#2661#0" expanded="true" />
+            <element signature="e#2556#2557#0" expanded="true" />
+            <element signature="e#2572#2573#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -300,8 +300,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2644#2645#0" expanded="true" />
-            <element signature="e#2660#2661#0" expanded="true" />
+            <element signature="e#2556#2557#0" expanded="true" />
+            <element signature="e#2572#2573#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -319,8 +319,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2644#2645#0" expanded="true" />
-            <element signature="e#2660#2661#0" expanded="true" />
+            <element signature="e#2556#2557#0" expanded="true" />
+            <element signature="e#2572#2573#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -330,8 +330,8 @@
         <state relative-caret-position="357">
           <caret line="24" column="78" lean-forward="true" selection-start-line="24" selection-start-column="78" selection-end-line="24" selection-end-column="78" />
           <folding>
-            <element signature="e#2644#2645#0" expanded="true" />
-            <element signature="e#2660#2661#0" expanded="true" />
+            <element signature="e#2556#2557#0" expanded="true" />
+            <element signature="e#2572#2573#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -346,11 +346,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SearchAndSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-220">
-          <caret line="88" column="17" lean-forward="false" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
+        <state relative-caret-position="-50">
+          <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
           <folding>
-            <element signature="e#2644#2645#0" expanded="true" />
-            <element signature="e#2660#2661#0" expanded="true" />
+            <element signature="e#2556#2557#0" expanded="true" />
+            <element signature="e#2572#2573#0" expanded="true" />
           </folding>
         </state>
       </provider>

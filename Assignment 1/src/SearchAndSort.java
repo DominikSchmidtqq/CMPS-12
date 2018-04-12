@@ -69,25 +69,25 @@ public class SearchAndSort {
 		for (int i = 0; i < array.length; i++) {
 			temp[i] = array[i];
 		}
-		int first1 = first;
-		int middle = mid + 1;
-		int index = first;
+		int i = first;
+		int j = mid + 1;
+		int k = first;
 
-		while((first <= mid) && (middle <= last)) {
-			if (temp[first1].compareTo(temp[middle]) <=0) {
-				array[index] = temp[first1];
-				first1++;
+		while((i <= mid) && (j <= last)) {
+			if (temp[i].compareTo(temp[j]) <=0) {
+				array[k] = temp[i];
+				i++;
 			} else {
-				array[index] = temp[middle];
-				middle++;
+				array[k] = temp[j];
+				j++;
 			}
-			index++;
+			k++;
 
 		}
-		while (first1 <= mid) {
-			array[index] = temp[first1];
-			index++;
-			first1++;
+		while (i <= mid) {
+			array[k] = temp[i];
+			k++;
+			i++;
 		}
 	}
 	/*
