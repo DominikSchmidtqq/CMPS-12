@@ -55,38 +55,39 @@ public class SearchAndSort {
 	* ========================================================================
 	* START TODO #2: "mergeSort"
 	*/
-	public static void mergeSort(String[] arrayToSort, String[] tempArray, int first, int last) {
+	public static void mergeSort(String[] array, String[] temp, int first, int last) {
 		if (first < last) {
-			int middleIndex = (first + last)/2;
-
-			mergeSort(arrayToSort,tempArray,first,middleIndex);
-			mergeSort(arrayToSort,tempArray,middleIndex + 1, last);
-
-			merge(arrayToSort, tempArray, first,last, middleIndex);
+			int mid = first + (last - first)/2;
+			mergeSort(array, temp, first, mid);
+			mergeSort(array, temp, mid + 1, last);
+			merge(array, temp, first, last, mid);
 		}
 	}
 
-	public static void merge(String[] arrayToSort, String[] tempArray, int first, int last, int middleIndex) {
-		int one = first;
-		int middleIndexOne = middleIndex;
-		int two = middleIndex + 1;
-		int lastTwo = last;
-		int indx = first;
+	public static void merge(String[] array, String[] temp, int first, int last, int mid) {
 
-		while ((one <= middleIndexOne) && (two <= lastTwo)) {
-			if (arrayToSort[one].compareTo(arrayToSort[two]) < 0) {
-				tempArray[indx] = arrayToSort[one];
-				one++;
-			} else {
-				tempArray[indx] = arrayToSort[two];
-				two++;
-			}
-			indx++;
+		for (int i = 0; i < array.length; i++) {
+			temp[i] = array[i];
 		}
-		while (one < middleIndex) {
-			arrayToSort[first] = tempArray[one];
-			one++;
-			indx++;
+		int first1 = first;
+		int middle = mid + 1;
+		int index = first;
+
+		while((first <= mid) && (middle <= last)) {
+			if (temp[first1].compareTo(temp[middle]) <=0) {
+				array[index] = temp[first1];
+				first1++;
+			} else {
+				array[index] = temp[middle];
+				middle++;
+			}
+			index++;
+
+		}
+		while (first1 <= mid) {
+			array[index] = temp[first1];
+			index++;
+			first1++;
 		}
 	}
 	/*
@@ -185,7 +186,7 @@ public class SearchAndSort {
 		* ========================================================================
 		* 	START: TODO #2
 		*/
-		mergeSort(allWords, new String[allWords.length], 0, allWords.length);
+		mergeSort(allWords, new String[allWords.length], 0, allWords.length-1);
 		// Put your call to mergeSort here to sort allWords.
 		
 		/*
