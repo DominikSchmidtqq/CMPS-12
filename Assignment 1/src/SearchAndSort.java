@@ -57,33 +57,36 @@ public class SearchAndSort {
 	*/
 	public static void mergeSort(String[] arrayToSort, String[] tempArray, int first, int last) {
 		if (first < last) {
-			int middleIndex = first + (last - first)/2;
+			int middleIndex = (first + last)/2;
 
 			mergeSort(arrayToSort,tempArray,first,middleIndex);
 			mergeSort(arrayToSort,tempArray,middleIndex + 1, last);
 
-			for (int i = 0; i <= last; i++) {
-				tempArray[i] = arrayToSort[i];
-			}
-			int one = first;
-			int temp = first;
-			int mid = middleIndex + 1;
+			merge(arrayToSort, tempArray, first,last, middleIndex);
+		}
+	}
 
-			while (first <= middleIndex && (middleIndex + 1) <= last) {
-				if ((tempArray[one].compareTo(tempArray[mid])) <= 0) {
-					arrayToSort[temp] = tempArray[one];
-					one++;
-				} else {
-					arrayToSort[last] = tempArray[mid];
-					mid++;
-				}
-				temp++;
-			}
-			while (one <= middleIndex) {
-				arrayToSort[first] = tempArray[one];
+	public static void merge(String[] arrayToSort, String[] tempArray, int first, int last, int middleIndex) {
+		int one = first;
+		int middleIndexOne = middleIndex;
+		int two = middleIndex + 1;
+		int lastTwo = last;
+		int indx = first;
+
+		while ((one <= middleIndexOne) && (two <= lastTwo)) {
+			if (arrayToSort[one].compareTo(arrayToSort[two]) < 0) {
+				tempArray[indx] = arrayToSort[one];
 				one++;
-				temp++;
+			} else {
+				tempArray[indx] = arrayToSort[two];
+				two++;
 			}
+			indx++;
+		}
+		while (one < middleIndex) {
+			arrayToSort[first] = tempArray[one];
+			one++;
+			indx++;
 		}
 	}
 	/*
