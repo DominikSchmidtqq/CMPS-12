@@ -111,11 +111,10 @@ public class SearchAndSort {
 		if (sortedWords[middle].equals(query)) {
 			return middle;
 		} else if ((sortedWords[middle].compareTo(query)) < 0) {
-			binarySearch(sortedWords, query, middle + 1, endIndex);
+			return binarySearch(sortedWords, query, middle + 1, endIndex);
 		} else {
-			binarySearch(sortedWords, query, startIndex, middle - 1);
+			return binarySearch(sortedWords, query, startIndex, middle - 1);
 		}
-		return middle;
 	}
 
 	public static int getSmallestIndex(String[] words, String query, int startIndex, int endIndex) {
@@ -123,11 +122,9 @@ public class SearchAndSort {
 
 		if (index == -1) {
 			return index;
-		} else if (binarySearch(words,query,startIndex,endIndex) != -1) {
+		} else {
 			return getSmallestIndex(words,query, 0, index - 1);
 		}
-
-		return index;
 	}
 
 	public static int getLargestIndex(String[] words, String query, int startIndex, int endIndex) {
@@ -135,11 +132,9 @@ public class SearchAndSort {
 
 		if (index == -1) {
 			return -1;
-		} else if (index != -1) {
-			return getLargestIndex(words,query, index + 1, endIndex);
+		} else {
+			return getLargestIndex(words, query, index + 1, endIndex);
 		}
-
-		return index;
 	}
 	/*
 	* END TODO #3: binary search
