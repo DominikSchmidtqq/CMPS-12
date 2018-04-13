@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 
 public class SearchAndSort {
 
-	// Utility function: split a string into words, 
+	// Utility function: split a string into words,
 	// making them all lowercase and ignoring all non-text characters
 	public static String[] splitIntoWords(String str) {
 		// Handle apostrophes: "lula's", "'top o' the mornin''"
@@ -82,7 +82,6 @@ public class SearchAndSort {
 				j++;
 			}
 			k++;
-
 		}
 		while (i <= mid) {
 			array[k] = temp[i];
@@ -121,17 +120,20 @@ public class SearchAndSort {
 		int index = binarySearch(words,query,startIndex,endIndex);
 
 		if (index == -1) {
-			return index;
+			return -1;
+		} else if (!words[index].equals(query)) {
+			return index + 1;
 		} else {
-			return getSmallestIndex(words,query, 0, index - 1);
+			return getSmallestIndex(words,query, startIndex, index - 1);
 		}
 	}
 
 	public static int getLargestIndex(String[] words, String query, int startIndex, int endIndex) {
 		int index = binarySearch(words, query, startIndex, endIndex);
-
 		if (index == -1) {
 			return -1;
+		} else if (!words[index].equals(query)) {
+			return index - 1;
 		} else {
 			return getLargestIndex(words, query, index + 1, endIndex);
 		}
@@ -143,7 +145,7 @@ public class SearchAndSort {
 
 
 	public static void main(String []args) {
-		
+
 		// Create a word list from Frankenstein
 		String[] allWords = createWordList("frankenstein.txt");
 
@@ -155,25 +157,25 @@ public class SearchAndSort {
 		if (args.length > 0) {
 			// There is an argument, so some different words to search for and count were passed in.
 			queryWords = args[0].split(",");
-		}			
+		}
 
-		
+
 		System.out.println("\nSEARCH AND SORT");
-		System.out.println("\nSearching and counting the words " + String.join(",", queryWords));		
-		
+		System.out.println("\nSearching and counting the words " + String.join(",", queryWords));
+
 		System.out.println("\nNAIVE SEARCH:");
 
-		
+
 		// Record the current time
 		long t0 = (new Date()).getTime();
 
 		// Time how long it takes to run timingCount loops
-		//   for countWordsInUnsorted 
-		for (int j = 0; j < timingCount; j++) { 
+		//   for countWordsInUnsorted
+		for (int j = 0; j < timingCount; j++) {
 			// Search for and count the words timingCount times in order to get an average time
 
 			for (int i = 0; i < queryWords.length; i++) {
-				// 
+				//
 
 				/*
 				* ========================================================================
@@ -189,7 +191,7 @@ public class SearchAndSort {
 				// For the first time the words are counted, print out the value
 				if (j == 0)
 					System.out.println(queryWords[i] + ":" + count);
-				
+
 			}
 		}
 
