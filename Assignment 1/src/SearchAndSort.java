@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 
 public class SearchAndSort {
 
+
 	// Utility function: split a string into words,
 	// making them all lowercase and ignoring all non-text characters
 	public static String[] splitIntoWords(String str) {
@@ -119,25 +120,50 @@ public class SearchAndSort {
 	public static int getSmallestIndex(String[] words, String query, int startIndex, int endIndex) {
 		int index = binarySearch(words,query,startIndex,endIndex);
 
-		if (index == -1) {
+		if (index == -1)
+			return -1;
+		else {
+			int smallestIndex = binarySearch(words, query, startIndex, index - 1);
+			if (smallestIndex == -1)
+				return -1;
+			else if (!words[smallestIndex].equals(query)) {
+				return smallestIndex + 1;
+			}
+			else
+				return smallestIndex;
+		}
+
+		/*if (index == -1) {
 			return -1;
 		} else if (!words[index].equals(query)) {
 			return index + 1;
 		} else {
 			return getSmallestIndex(words,query, startIndex, index - 1);
-		}
+		}*/
 	}
 
 	public static int getLargestIndex(String[] words, String query, int startIndex, int endIndex) {
 		int index = binarySearch(words, query, startIndex, endIndex);
 
-		if (index == -1) {
+		if (index == -1)
+			return -1;
+		else {
+			int largestIndex = binarySearch(words, query, index + 1, endIndex);
+			if (largestIndex == -1)
+				return -1;
+			else if (!words[largestIndex].equals(query)) {
+				return largestIndex - 1;
+			} else {
+				return largestIndex;
+			}
+		}
+		/*if (index == -1) {
 			return -1;
 		} else if (!words[index].equals(query)) {
 			return index - 1;
 		} else {
 			return getLargestIndex(words, query, index + 1, endIndex);
-		}
+		}*/
 	}
 	/*
 	* END TODO #3: binary search
