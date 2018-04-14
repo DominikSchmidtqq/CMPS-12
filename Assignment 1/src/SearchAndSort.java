@@ -130,6 +130,7 @@ public class SearchAndSort {
 
 	public static int getLargestIndex(String[] words, String query, int startIndex, int endIndex) {
 		int index = binarySearch(words, query, startIndex, endIndex);
+
 		if (index == -1) {
 			return -1;
 		} else if (!words[index].equals(query)) {
@@ -256,7 +257,15 @@ public class SearchAndSort {
 				   2. call getLargestIndex to find the largest index at which a word occurs.
 				   3. use these two indices to figure out how many times the word occurred. 
 				*/
-				int count = getLargestIndex(allWords, allWords[i], 0, allWords.length - 1) - getSmallestIndex(allWords, allWords[i], 0, allWords.length - 1);
+				int count = 0;
+
+				int smallest = getSmallestIndex(allWords, queryWords[i], 0, allWords.length - 1);
+				int largest = getLargestIndex(allWords, queryWords[i], 0, allWords.length - 1);
+
+				if (smallest == -1 || largest == -1) {
+					count = 0;
+				} else
+					count = largest - smallest;
 				
 				/*
 				* 	END: TODO #3
