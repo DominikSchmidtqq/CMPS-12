@@ -122,16 +122,12 @@ public class SearchAndSort {
 
 		if (index == -1)
 			return -1;
-		else {
-			int smallestIndex = binarySearch(words, query, startIndex, index - 1);
-			if (smallestIndex == -1)
-				return -1;
-			else if (!words[smallestIndex].equals(query)) {
-				return smallestIndex + 1;
-			}
-			else
-				return smallestIndex;
-		}
+		int smallestIndex = binarySearch(words, query, startIndex, index - 1);
+		if (smallestIndex == -1)
+			return -1;
+		else
+			return smallestIndex;
+
 
 		/*if (index == -1) {
 			return -1;
@@ -147,16 +143,11 @@ public class SearchAndSort {
 
 		if (index == -1)
 			return -1;
-		else {
-			int largestIndex = binarySearch(words, query, index + 1, endIndex);
-			if (largestIndex == -1)
-				return -1;
-			else if (!words[largestIndex].equals(query)) {
-				return largestIndex - 1;
-			} else {
-				return largestIndex;
-			}
-		}
+		int largestIndex = binarySearch(words, query, index + 1, endIndex);
+		if (largestIndex == -1)
+			return -1;
+		return largestIndex;
+
 		/*if (index == -1) {
 			return -1;
 		} else if (!words[index].equals(query)) {
@@ -208,8 +199,7 @@ public class SearchAndSort {
 				* ========================================================================
 				* 	START: TODO #1
 				*/
-
-				int count = countWordsInUnsorted(allWords, queryWords[i]); // Replace the 0 in this line of code with the call to countWordsInUnsorted once you've written it
+				int count = countWordsInUnsorted(allWords, queryWords[i]);
 				/*
 				* 	END: TODO #1
 				* ========================================================================
@@ -240,8 +230,6 @@ public class SearchAndSort {
 		* 	START: TODO #2
 		*/
 		mergeSort(allWords, new String[allWords.length], 0, allWords.length-1);
-		// Put your call to mergeSort here to sort allWords.
-		
 		/*
 		* 	END: TODO #2
 		* ========================================================================
@@ -276,22 +264,15 @@ public class SearchAndSort {
 				* ========================================================================
 				* 	START: TODO #3
 				*/
-
-				/* 
-				   Replace the line of code below with the code to:
-				   1. call getSmallestIndex to find the smallest index at which a word occurs.
-				   2. call getLargestIndex to find the largest index at which a word occurs.
-				   3. use these two indices to figure out how many times the word occurred. 
-				*/
 				int count = 0;
 
 				int smallest = getSmallestIndex(allWords, queryWords[i], 0, allWords.length - 1);
 				int largest = getLargestIndex(allWords, queryWords[i], 0, allWords.length - 1);
 
-				if (smallest == -1 || largest == -1) {
+				if (smallest == -1)
 					count = 0;
-				} else
-					count = largest - smallest;
+				else
+					count = largest - smallest + 1;
 				
 				/*
 				* 	END: TODO #3
