@@ -118,15 +118,20 @@ public class SearchAndSort {
 	}
 
 	public static int getSmallestIndex(String[] words, String query, int startIndex, int endIndex) {
+		if (startIndex > endIndex)
+			return -1;
+
 		int index = binarySearch(words,query,startIndex,endIndex);
 
 		if (index == -1)
 			return -1;
+
 		int smallestIndex = binarySearch(words, query, startIndex, index - 1);
+
 		if (smallestIndex == -1)
 			return -1;
-		else
-			return smallestIndex;
+
+		return smallestIndex;
 
 
 		/*if (index == -1) {
@@ -139,13 +144,19 @@ public class SearchAndSort {
 	}
 
 	public static int getLargestIndex(String[] words, String query, int startIndex, int endIndex) {
+		if (endIndex < startIndex)
+			return -1;
+
 		int index = binarySearch(words, query, startIndex, endIndex);
 
 		if (index == -1)
 			return -1;
+
 		int largestIndex = binarySearch(words, query, index + 1, endIndex);
+
 		if (largestIndex == -1)
 			return -1;
+
 		return largestIndex;
 
 		/*if (index == -1) {
