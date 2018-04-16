@@ -121,14 +121,14 @@ public class SearchAndSort {
 		if (startIndex > endIndex) {
 			return -1;
 		}
-		
+
 		int index = binarySearch(words,query,startIndex,endIndex);
 
 		if (index == -1) {
 			return -1;
 		}
 
-		int smallestIndex = binarySearch(words, query, startIndex, index - 1);
+		int smallestIndex = getSmallestIndex(words, query, startIndex, index - 1);
 
 		if (smallestIndex == -1) {
 			return index;
@@ -148,7 +148,7 @@ public class SearchAndSort {
 			return -1;
 		}
 
-		int largestIndex = binarySearch(words, query, index + 1, endIndex);
+		int largestIndex = getLargestIndex(words, query, index + 1, endIndex);
 
 		if (largestIndex == -1) {
 			return index;
