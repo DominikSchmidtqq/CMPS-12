@@ -118,54 +118,43 @@ public class SearchAndSort {
 	}
 
 	public static int getSmallestIndex(String[] words, String query, int startIndex, int endIndex) {
-		if (startIndex > endIndex)
+		if (startIndex > endIndex) {
 			return -1;
-
+		}
+		
 		int index = binarySearch(words,query,startIndex,endIndex);
 
-		if (index == -1)
+		if (index == -1) {
 			return -1;
+		}
 
 		int smallestIndex = binarySearch(words, query, startIndex, index - 1);
 
-		if (smallestIndex == -1)
+		if (smallestIndex == -1) {
 			return index;
+		}
 
 		return smallestIndex;
-
-
-		/*if (index == -1) {
-			return -1;
-		} else if (!words[index].equals(query)) {
-			return index + 1;
-		} else {
-			return getSmallestIndex(words,query, startIndex, index - 1);
-		}*/
 	}
 
 	public static int getLargestIndex(String[] words, String query, int startIndex, int endIndex) {
-		if (endIndex < startIndex)
+		if (endIndex < startIndex) {
 			return -1;
+		}
 
 		int index = binarySearch(words, query, startIndex, endIndex);
 
-		if (index == -1)
+		if (index == -1) {
 			return -1;
+		}
 
 		int largestIndex = binarySearch(words, query, index + 1, endIndex);
 
-		if (largestIndex == -1)
+		if (largestIndex == -1) {
 			return index;
+		}
 
 		return largestIndex;
-
-		/*if (index == -1) {
-			return -1;
-		} else if (!words[index].equals(query)) {
-			return index - 1;
-		} else {
-			return getLargestIndex(words, query, index + 1, endIndex);
-		}*/
 	}
 	/*
 	* END TODO #3: binary search
