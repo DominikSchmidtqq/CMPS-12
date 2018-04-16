@@ -1,7 +1,7 @@
 import java.io.*;
-import java.util.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+		import java.util.*;
+		import java.nio.file.Files;
+		import java.nio.file.Paths;
 
 
 public class SearchAndSort {
@@ -106,9 +106,9 @@ public class SearchAndSort {
 			return -1;
 		}
 
-		int middle = (startIndex + endIndex)/2;
+		int middle = startIndex + (endIndex - startIndex)/2;
 
-		if (sortedWords[middle].equals(query)) {
+		if (sortedWords[middle].compareTo(query) == 0) {
 			return middle;
 		} else if ((sortedWords[middle].compareTo(query)) < 0) {
 			return binarySearch(sortedWords, query, middle + 1, endIndex);
@@ -129,7 +129,7 @@ public class SearchAndSort {
 		int smallestIndex = binarySearch(words, query, startIndex, index - 1);
 
 		if (smallestIndex == -1)
-			return -1;
+			return index;
 
 		return smallestIndex;
 
@@ -155,7 +155,7 @@ public class SearchAndSort {
 		int largestIndex = binarySearch(words, query, index + 1, endIndex);
 
 		if (largestIndex == -1)
-			return -1;
+			return index;
 
 		return largestIndex;
 
@@ -229,7 +229,7 @@ public class SearchAndSort {
 		long timeToSeachNaive = t1 - t0;
 		int searchCount = timingCount*queryWords.length;
 
-		// Output how long the searches took, for how many searches 
+		// Output how long the searches took, for how many searches
 		// (remember: searches = timingcount * the number of words searched)
 		System.out.printf("%d ms for %d searches, %f ms per search\n", timeToSeachNaive, searchCount, timeToSeachNaive*1.0f/searchCount);
 
@@ -265,7 +265,7 @@ public class SearchAndSort {
 
 		System.out.println("BINARY SEARCH:");
 
-		// Run timingCount loops for countWordsInSorted 
+		// Run timingCount loops for countWordsInSorted
 		// for the first loop, output the count for each word
 
 		for (int j = 0; j < timingCount; j++) {
@@ -284,7 +284,7 @@ public class SearchAndSort {
 					count = 0;
 				else
 					count = largest - smallest + 1;
-				
+
 				/*
 				* 	END: TODO #3
 				* ========================================================================
@@ -293,10 +293,10 @@ public class SearchAndSort {
 				// For the first one, print out the value
 				if (j == 0)
 					System.out.println(queryWords[i] + ":" + count);
-				}
+			}
 		}
 
-		// Output how long the searches took, for how many searches 
+		// Output how long the searches took, for how many searches
 		// (remember: searchCount = timingcount * the number of words searched. This is computed above.)
 
 		// Record the current time
