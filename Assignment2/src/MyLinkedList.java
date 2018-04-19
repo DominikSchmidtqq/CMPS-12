@@ -1,30 +1,29 @@
+public class MyLinkedList {
 
-public class MyLinkedList implements ListInterface {
+    /* TODO: Write a LinkedList implementation for all the methods specified in ListInterface */
+    public int size;
+    Node head = null;
+    Node tail = null;
 
-	/* TODO: Write a LinkedList implementation for all the methods specified in ListInterface */ 
-	public int size;
-	Node head = null;
-	Node tail = null;
-
-	public MyLinkedList() {
-	    this.size = 0;
+    public MyLinkedList() {
+        this.size = 0;
     }
 
     public int size() {
-	    return this.size;
+        return this.size;
     }
 
     public boolean isEmpty() {
-	    if (this.size == 0) {
-	        return true;
+        if (this.size == 0) {
+            return true;
         } else {
-	        return false;
+            return false;
         }
     }
 
     public void add(int index, Object value) {
-        if (index > 0 || index > this.size) {
-            throw new ListIndexOutOfBoundsException("Index" + index + " is out of range");
+        if (index < 0 || index > this.size) {
+            throw new ListIndexOutOfBoundsException("Index " + index + " is out of range");
         } else {
             Node nextNode = new Node();
             nextNode.data = value;
@@ -63,20 +62,20 @@ public class MyLinkedList implements ListInterface {
     }
 
     public void remove(int index) {
-	    if (this.isEmpty()) {
-	        throw new ListIndexOutOfBoundsException("List is empty");
+        if (this.isEmpty()) {
+            throw new ListIndexOutOfBoundsException("List is empty");
         } else if (index < 0) {
-	        throw new ListIndexOutOfBoundsException("Invalid index");
+            throw new ListIndexOutOfBoundsException("Invalid index");
         } else {
-	        if (index == 0) {
-	            Node current = head;
-	            head = head.link;
-	            current.link = null;
+            if (index == 0) {
+                Node current = head;
+                head = head.link;
+                current.link = null;
             } else if (index == this.size -1) {
-	            Node previous = head;
+                Node previous = head;
 
-	            for (int i = 0; i < this.size - 2; i++) {
-	                previous = previous.link;
+                for (int i = 0; i < this.size - 2; i++) {
+                    previous = previous.link;
                 }
                 previous.link = null;
             }
@@ -98,20 +97,20 @@ public class MyLinkedList implements ListInterface {
     }
 
     public int find(Object o) {
-	    Node current = head;
+        Node current = head;
 
-	    for (int i = 0; i < this.size; i++) {
-	        current = current.link;
-
-	        if (current.equals(o)) {
-	            return i;
+        for (int i = 0; i < this.size; i++) {
+            if(current.data.equals(o)){
+                return i;
+            } else {
+                current = current.link;
             }
         }
         return -1;
     }
 
     public void removeAll() {
-        for (int i = 0; i < this.size; i++) {
+        for (int i = 0; i <= this.size; i++) {
             this.remove(i);
         }
     }
