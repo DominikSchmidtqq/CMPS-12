@@ -114,8 +114,8 @@ public class MyLinkedList implements ListInterface {
     }
 
     public void removeAll() {
-        int previousSize = this.size;
+        /*int previousSize = this.size;
 	    this = new MyLinkedList();
-        this.size = previousSize;
+        this.size = previousSize;*/
     }
 }
