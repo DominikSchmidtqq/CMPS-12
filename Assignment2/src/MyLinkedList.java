@@ -78,7 +78,6 @@ public class MyLinkedList implements ListInterface {
 	            for (int i = 0; i < this.size - 2; i++) {
 	                previous = previous.link;
                 }
-
                 previous.link = null;
             }
             this.size--;
@@ -87,14 +86,13 @@ public class MyLinkedList implements ListInterface {
 
     public Object get(int index) {
         if (index < 0 || index >= this.size) {
-            throw new ListIndexOutOfBoundsException("Cannot get value at Index: "+index+" because it is out of range");
+            throw new ListIndexOutOfBoundsException("Cannot get value at Index: " + index + " because it is out of range");
         } else {
             Node current = head;
 
             for (int i = 0; i < index; i++) {
                 current = current.link;
             }
-
             return current.data;
         }
     }
@@ -109,13 +107,12 @@ public class MyLinkedList implements ListInterface {
 	            return i;
             }
         }
-
         return -1;
     }
 
     public void removeAll() {
-        /*int previousSize = this.size;
-	    this = new MyLinkedList();
-        this.size = previousSize;*/
+        for (int i = 0; i < this.size; i++) {
+            this.remove(i);
+        }
     }
 }
