@@ -1,4 +1,4 @@
-# CMPS12B
+# CMPS-12B
 
 ## Lab 1
 * Tracery (tracery.io) is a simple text-expansion langauge, running about 7000 chatbots on Twitter
