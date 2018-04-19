@@ -93,7 +93,24 @@ public class RhymingDict {
 		   list of RhymeGroupWords. Inside each of this objects is another linked list which is a list of words within the same
 		   rhyme group. I would recommend first getting this working with MyLinkedList for both lists (rhyme groups and 
 		   word lists) then get it working using MySortedLinkedList for the word groups. */
+		for (int i = 0; i < dictionaryLines.length; i++) {
+			if (rhymeGroups.find(getRhymeGroup(dictionaryLines[i])) == -1) {
+				rhymeGroups.add(0, getRhymeGroup(dictionaryLines[i]));
+			}
+		}
 
+		for (int i = 0; i < rhymeGroups.size(); i++) {
+			rhymeGroups.add(rhymeGroups.size(), new MySortedLinkedList());
+		}
+
+		for (int i = 0; i < dictionaryLines.length; i++) {
+			for (int j = 0; j < rhymeGroups.size(); j++) {
+				if (rhymeGroups.find(getRhymeGroup(dictionaryLines[j])) != -1) {
+					MySortedLinkedList ls = (MySortedLinkedList)rhymeGroups.get(rhymeGroups.size());
+					ls.add(ls.size(), getWord(dictionaryLines[i]));
+				}
+			}
+		}
 		/* End TODO for adding dictionary in rhymeGroups. */
 
 		// This code prints out the rhyme groups that have been loaded above. 
