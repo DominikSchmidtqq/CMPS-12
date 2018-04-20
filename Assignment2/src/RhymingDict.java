@@ -87,7 +87,7 @@ public class RhymingDict {
 		*/
 
 		// List of rhyme groups. The items in this linked list will be RhymeGroupWords. 
-		ListInterface rhymeGroups = new MyLinkedList(); 
+		ListInterface rhymeGroups = new MyLinkedList();
 
 		/* TODO: Add in your code to load the dictionary into your linked lists. Remember that rhymeGroups is a 
 		   list of RhymeGroupWords. Inside each of this objects is another linked list which is a list of words within the same
@@ -100,10 +100,9 @@ public class RhymingDict {
 			}
 		}
 
-
 		for (int i = 0; i < dictionaryLines.length; i++) {
 			for (int j = 0; j < rhymeGroups.size(); j+=2) {
-				if (rhymeGroups.find(getRhymeGroup(dictionaryLines[i])) != -1) {
+				if (rhymeGroups.find(getRhymeGroup(dictionaryLines[i])) == j) {
 					MySortedLinkedList ls = (MySortedLinkedList)rhymeGroups.get(j + 1);
 					ls.add(getWord(dictionaryLines[i]));
 				}
@@ -117,9 +116,19 @@ public class RhymingDict {
 			RhymeGroupWords rg = (RhymeGroupWords) rhymeGroups.get(i);
 			System.out.print(rg.getRhymeGroup() + ": ");
 			System.out.println(rg.getWordList());
-		} 
+		}
 
 		/* TODO: Add the code here to iterate through pairs of arguments, testing to see if they are in the same rhyme group or not.
 		*/
+
+		for (int i = 0; i < args.length; i++) {
+			if ((args.length % 2 != 0) && (i == args.length - 1)) {
+				break;
+			} else {
+				for (int j = 1; j < rhymeGroups.size(); j+=2) {
+
+				}
+			}
+		}
 	}
 }
