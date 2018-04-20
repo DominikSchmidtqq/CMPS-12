@@ -114,4 +114,15 @@ public class MyLinkedList implements ListInterface {
             this.remove(i);
         }
     }
+
+    public String toString() {
+        String list = new String();
+        for (int i = 0; i < this.size; i++) {
+            if (i != this.size)
+                list += this.get(i)+ ", ";
+            else
+                list += this.get(i);
+        }
+        return list;
+    }
 }
