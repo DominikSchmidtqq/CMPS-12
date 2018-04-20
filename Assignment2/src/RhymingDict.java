@@ -96,21 +96,20 @@ public class RhymingDict {
 		for (int i = 0; i < dictionaryLines.length; i++) {
 			if (rhymeGroups.find(getRhymeGroup(dictionaryLines[i])) == -1) {
 				rhymeGroups.add(0, getRhymeGroup(dictionaryLines[i]));
+				rhymeGroups.add(1, new MySortedLinkedList());
 			}
 		}
 
-		for (int i = 0; i < rhymeGroups.size(); i++) {
-			rhymeGroups.add(rhymeGroups.size(), new MySortedLinkedList());
-		}
 
 		for (int i = 0; i < dictionaryLines.length; i++) {
-			for (int j = 0; j < rhymeGroups.size(); j++) {
-				if (rhymeGroups.find(getRhymeGroup(dictionaryLines[j])) != -1) {
-					MySortedLinkedList ls = (MySortedLinkedList)rhymeGroups.get(rhymeGroups.size());
-					ls.add(ls.size(), getWord(dictionaryLines[i]));
+			for (int j = 0; j < rhymeGroups.size(); j+=2) {
+				if (rhymeGroups.find(getRhymeGroup(dictionaryLines[i])) != -1) {
+					MySortedLinkedList ls = (MySortedLinkedList)rhymeGroups.get(j + 1);
+					ls.add(getWord(dictionaryLines[i]));
 				}
 			}
 		}
+
 		/* End TODO for adding dictionary in rhymeGroups. */
 
 		// This code prints out the rhyme groups that have been loaded above. 
