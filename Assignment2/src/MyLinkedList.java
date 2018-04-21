@@ -1,7 +1,11 @@
 public class MyLinkedList implements ListInterface {
-
     /* TODO: Write a LinkedList implementation for all the methods specified in ListInterface */
-    public int size;
+    protected class Node {
+		Object data;
+		Node link;
+	}
+	
+	public int size;
     Node head = null;
     Node tail = null;
 

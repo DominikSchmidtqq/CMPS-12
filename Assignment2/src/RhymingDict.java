@@ -93,24 +93,78 @@ public class RhymingDict {
 		   list of RhymeGroupWords. Inside each of this objects is another linked list which is a list of words within the same
 		   rhyme group. I would recommend first getting this working with MyLinkedList for both lists (rhyme groups and 
 		   word lists) then get it working using MySortedLinkedList for the word groups. */
+		
+		String[] RhymeGroupsInDict = new String[dictionaryLines.length];
+
+		
 		for (int i = 0; i < dictionaryLines.length; i++) {
-			if (rhymeGroups.find(getRhymeGroup(dictionaryLines[i])) == -1) {
-				rhymeGroups.add(0, getRhymeGroup(dictionaryLines[i]));
-				rhymeGroups.add(1, new MySortedLinkedList());
+			String currentRg = new String(getRhymeGroup(dictionaryLines[i]));
+			for (int j = 0; j < RhymeGroupsInDict.length; j++) {
+				
+				if (currentRg.equals((RhymeGroupsInDict[j]))) {
+					break;
+				} else if(RhymeGroupsInDict[j] == null) {
+					RhymeGroupsInDict[j] = currentRg;
+					//System.out.println("DictLine "+currentRg+" Array "+RhymeGroupsInDict[j]);
+					break;
+				}
 			}
 		}
 
+		int MaxCount = 0; 
+		
+		for (int i = 0; i < RhymeGroupsInDict.length; i++) {
+			if ( RhymeGroupsInDict[i] == null) {
+				MaxCount = i;
+				break;
+			}
+		}
+		
+		String[] rgid  = new String[MaxCount];
+		
+		for (int i = 0; i < MaxCount; i++) {
+			rgid[i] = RhymeGroupsInDict[i];
+			//System.out.println(rgid[i]);
+			//System.out.println(addedToList[i]);
+		}
+		
+		for (int i = 0; i < MaxCount; i++) {
+			MyLinkedList ls = new MyLinkedList();
+			for (int j = 0; j < dictionaryLines.length; j++) {
+				if (getRhymeGroup(dictionaryLines[j]).equals(rgid[i])) {
+					String word = new String(getWord(dictionaryLines[j]));
+					ls.add(0,word);
+				}
+			}
+			rhymeGroups.add(0, new RhymeGroupWords(rgid[i], ls));
+		}
+		
+		
+		
+		/*rhymeGroups.add(0, new RhymeGroupWords(getRhymeGroup(dictionaryLines[0]), new MySortedLinkedList()));
 		for (int i = 0; i < dictionaryLines.length; i++) {
+			MySortedLinkedList ls = new MySortedLinkedList();
+			RhymeGroupWords rg = new RhymeGroupWords(getRhymeGroup(dictionaryLines[i]), ls);
+			for (int j = 0; j < rhymeGroups.size(); j++) {
+				RhymeGroupWords rg2 = (RhymeGroupWords)rhymeGroups.get(j);
+				
+				if (!rg2.getRhymeGroup().equals(dictionaryLines[i])) {
+					rhymeGroups.add(0, rg);
+				}
+			}
+		} */
+		
+		//(new RhymeGroupWords(getRhymeGroup(dictionaryLines[i), new MySortedLinkedList))
+		/*for (int i = 0; i < dictionaryLines.length; i++) {
 			for (int j = 0; j < rhymeGroups.size(); j+=2) {
 				if (rhymeGroups.find(getRhymeGroup(dictionaryLines[i])) == j) {
 					MySortedLinkedList ls = (MySortedLinkedList)rhymeGroups.get(j + 1);
 					ls.add(getWord(dictionaryLines[i]));
 				}
 			}
-		}
+		}*/
 
 		/* End TODO for adding dictionary in rhymeGroups. */
-
 		// This code prints out the rhyme groups that have been loaded above. 
 		for(int i =0; i < rhymeGroups.size(); i++) {
 			RhymeGroupWords rg = (RhymeGroupWords) rhymeGroups.get(i);
@@ -120,7 +174,7 @@ public class RhymingDict {
 
 		/* TODO: Add the code here to iterate through pairs of arguments, testing to see if they are in the same rhyme group or not.
 		*/
-
+		/*
 		for (int i = 0; i < args.length; i++) {
 			if ((args.length % 2 != 0) && (i == args.length - 1)) {
 				break;
@@ -129,6 +183,6 @@ public class RhymingDict {
 
 				}
 			}
-		}
+		}*/
 	}
 }
