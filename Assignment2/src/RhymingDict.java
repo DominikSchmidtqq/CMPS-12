@@ -105,7 +105,6 @@ public class RhymingDict {
 					break;
 				} else if(RhymeGroupsInDict[j] == null) {
 					RhymeGroupsInDict[j] = currentRg;
-					//System.out.println("DictLine "+currentRg+" Array "+RhymeGroupsInDict[j]);
 					break;
 				}
 			}
@@ -124,8 +123,6 @@ public class RhymingDict {
 		
 		for (int i = 0; i < MaxCount; i++) {
 			rgid[i] = RhymeGroupsInDict[i];
-			//System.out.println(rgid[i]);
-			//System.out.println(addedToList[i]);
 		}
 		
 		for (int i = 0; i < MaxCount; i++) {
@@ -139,31 +136,6 @@ public class RhymingDict {
 			rhymeGroups.add(0, new RhymeGroupWords(rgid[i], ls));
 		}
 		
-		
-		
-		/*rhymeGroups.add(0, new RhymeGroupWords(getRhymeGroup(dictionaryLines[0]), new MySortedLinkedList()));
-		for (int i = 0; i < dictionaryLines.length; i++) {
-			MySortedLinkedList ls = new MySortedLinkedList();
-			RhymeGroupWords rg = new RhymeGroupWords(getRhymeGroup(dictionaryLines[i]), ls);
-			for (int j = 0; j < rhymeGroups.size(); j++) {
-				RhymeGroupWords rg2 = (RhymeGroupWords)rhymeGroups.get(j);
-				
-				if (!rg2.getRhymeGroup().equals(dictionaryLines[i])) {
-					rhymeGroups.add(0, rg);
-				}
-			}
-		} */
-		
-		//(new RhymeGroupWords(getRhymeGroup(dictionaryLines[i), new MySortedLinkedList))
-		/*for (int i = 0; i < dictionaryLines.length; i++) {
-			for (int j = 0; j < rhymeGroups.size(); j+=2) {
-				if (rhymeGroups.find(getRhymeGroup(dictionaryLines[i])) == j) {
-					MySortedLinkedList ls = (MySortedLinkedList)rhymeGroups.get(j + 1);
-					ls.add(getWord(dictionaryLines[i]));
-				}
-			}
-		}*/
-
 		/* End TODO for adding dictionary in rhymeGroups. */
 		// This code prints out the rhyme groups that have been loaded above. 
 		for(int i =0; i < rhymeGroups.size(); i++) {
@@ -201,7 +173,7 @@ public class RhymingDict {
 						break;
 					}
 					second++;
-				} 
+				}
 				
 				if (list.find(args[j]) != -1 && list.find(args[j + 1]) != -1) {
 					System.out.println(args[j] + " and " + args[j + 1] + " rhyme");
