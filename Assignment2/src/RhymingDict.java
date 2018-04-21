@@ -174,15 +174,32 @@ public class RhymingDict {
 
 		/* TODO: Add the code here to iterate through pairs of arguments, testing to see if they are in the same rhyme group or not.
 		*/
-		/*
-		for (int i = 0; i < args.length; i++) {
-			if ((args.length % 2 != 0) && (i == args.length - 1)) {
-				break;
-			} else {
-				for (int j = 1; j < rhymeGroups.size(); j+=2) {
-
+		for (int j = 0; j < args.length; j+=2) {
+			for (int i = 0; i < MaxCount; i++) {
+				int first = 0;
+				int second = 0;
+				RhymeGroupWords current = (RhymeGroupWords)rhymeGroups.get(i);
+				MyLinkedList list = (MyLinkedList)current.getWordList();
+				if ((args.length % 2 != 0) && (j == args.length - 1)) {
+					break;
+				} else if (list.find(args[j]) == -1) {
+					first++;
+					if (first == MaxCount - 1) {
+						System.out.println(args[j] + " is not in the dictionary");
+					}
+				} else if (list.find(args[j + 1]) == -1) {
+					second++;
+					if (second == MaxCount - 1) {
+						System.out.println(args[j + 1] + " is not in the dictionary");
+					}
+				} else {
+					if (list.find(args[j]) != -1 && list.find(args[j + 1]) != -1) {
+						System.out.println(args[j] + " and " + args[j + 1] + " rhyme");
+					} else if (i == args.length - 1) {
+						System.out.println(args[j] + " and " + args[j + 1] + " don't rhyme");
+					}
 				}
 			}
-		}*/
+		}
 	}
 }
