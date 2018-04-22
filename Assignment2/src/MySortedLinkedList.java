@@ -29,19 +29,28 @@ public class MySortedLinkedList extends MyLinkedList {
 			tail = nextNode;
 		} else {
 			Node current = head;
-
+			int count = 0;
+			
 			for (int i = 0; i < this.size; i++) {
 				current = current.link;
-
-				if (c.compareTo(this.get(i)) <= 0) {
-					Node previous = current;
-					current = current.link;
-					previous.link = nextNode;
-					nextNode.link = current;
-
+				if (c.compareTo(this.get(i)) < 0) {
+					count = i;
+					System.out.println(c +" "+ c.compareTo(this.get(i))+" "+ this.get(i));
+					System.out.println("Inserting " + c + " at "+i);
 					break;
 				}
 			}
+			
+			current = head;
+			
+			for (int i = 0; i < count - 1; i++) {
+				current = current.link;
+			}
+			
+			Node previous = current;
+			current = current.link;
+			previous.link = nextNode;
+			nextNode.link = current;
 		}
 		size++;
 	}
