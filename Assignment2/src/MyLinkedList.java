@@ -122,10 +122,14 @@ public class MyLinkedList implements ListInterface {
     public String toString() {
         String list = new String();
         for (int i = 0; i < this.size; i++) {
-            if (i != this.size)
-                list += this.get(i)+ ", ";
+            if (i == 0) {
+				list = "(";
+			}
+			
+			if (i != this.size - 1)
+                list += this.get(i) + ", ";
             else
-                list += this.get(i);
+                list += this.get(i) + ")";
         }
         return list;
     }
