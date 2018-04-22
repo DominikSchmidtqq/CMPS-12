@@ -35,8 +35,6 @@ public class MySortedLinkedList extends MyLinkedList {
 				current = current.link;
 				if (c.compareTo(this.get(i)) < 0) {
 					count = i;
-					System.out.println(c +" "+ c.compareTo(this.get(i))+" "+ this.get(i));
-					System.out.println("Inserting " + c + " at "+i);
 					break;
 				}
 			}

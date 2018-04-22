@@ -126,11 +126,11 @@ public class RhymingDict {
 		}
 		
 		for (int i = 0; i < MaxCount; i++) {
-			MyLinkedList ls = new MyLinkedList();
+			MySortedLinkedList ls = new MySortedLinkedList();
 			for (int j = 0; j < dictionaryLines.length; j++) {
 				if (getRhymeGroup(dictionaryLines[j]).equals(rgid[i])) {
 					String word = new String(getWord(dictionaryLines[j]));
-					ls.add(0,word);
+					ls.add(word);
 				}
 			}
 			rhymeGroups.add(0, new RhymeGroupWords(rgid[i], ls));
