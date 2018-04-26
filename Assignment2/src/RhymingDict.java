@@ -162,7 +162,7 @@ public class RhymingDict {
 				if (list.find(args[j]) == -1) {
 					if (first == MaxCount - 1) {
 						System.out.println(args[j] + " is not in the dictionary"+" ");
-						break;
+						
 					}
 					first++;
 				} 
