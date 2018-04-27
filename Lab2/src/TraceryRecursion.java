@@ -67,7 +67,22 @@ public class TraceryRecursion {
 	* START: TO DO: public static InputStream getInputStream(String[] args)
 	*/
 	public static InputStream getInputStream(String args[]) {
-
+		if (args[0].equals("-in") && args.length > 0) {
+			try {
+				return new FileInputStream(args[1]);
+			} catch (FileNotFoundException e) {
+				System.out.println("Input grammar file does not exist.");
+				return System.in;
+			}
+		} else if (args[2].equals("-in")) {
+			try {
+				return new FileInputStream(args[3]);
+			} catch (FileNotFoundException e) {
+				System.out.println("Input grammar file does not exist.");
+				return System.in;
+			}
+		}
+		return System.in;
 	}
 	/* 
 	* END: TO DO: public static InputStream getInputStream(String[] args)
@@ -76,8 +91,23 @@ public class TraceryRecursion {
 	/*
 	* START: TO DO: public static PrintStream getOutputStream(String[] args)
 	*/
-	public static PrintStream getOutputStream(String[] args) {
-
+	public static PrintStream getOutputStream(String args[]) {
+		if (args[0].equals("-out") && args.length > 0) {
+			try {
+				return new PrintStream(args[1]);
+			} catch (FileNotFoundException e) {
+				System.out.println("Output file can not be created.");
+				return System.out;
+			}
+		} else if (args[2].equals("-out")) {
+			try {
+				return new PrintStream(args[3]);
+			} catch (FileNotFoundException e) {
+				System.out.println("Output file can not be created.");
+				return System.out;
+			}
+		}
+		return System.out;
 	}
 
 	/* 
@@ -113,7 +143,7 @@ public class TraceryRecursion {
 		// Expand the start symbol until there are no more symbols to expand. Do this 'count' number of times.
 		for (int i = 0; i < count; i++) { 
 			// TO DO: Change the line below so it prints to the correct PrintStream instead of always System.out
-			// System.out.println(rule.expand(grammar));
+			 System.out.println();
 		}
 	}
 }
