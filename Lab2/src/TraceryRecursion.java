@@ -145,6 +145,7 @@ public class TraceryRecursion {
 		// Expand the start symbol until there are no more symbols to expand. Do this 'count' number of times.
 		for (int i = 0; i < count; i++) { 
 			// TO DO: Change the line below so it prints to the correct PrintStream instead of always System.out
+			 printStream.println(rule.expand(grammar));
 		}
 	}
 }
