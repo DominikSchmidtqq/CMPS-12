@@ -15,7 +15,7 @@ public class TraceryRecursion {
 	* using the PrinStream.println() method.  
 	*/
 	public static void outputGrammar(Hashtable<String, Rule[]> grammar, PrintStream ps) {
-		System.out.println("\nGRAMMAR:");
+		ps.println("\nGRAMMAR:");
 		for ( String key : grammar.keySet() ) {
 			String line = "";
 			line += key + ": " + String.format("%1$" + (20 - key.length()) + "s", " ");
@@ -23,7 +23,7 @@ public class TraceryRecursion {
 				line += "\"" + rule + "\"," ;
 			}
 
-			System.out.println(line);
+			ps.println(line);
 		}
 	}
 	/*
@@ -66,16 +66,19 @@ public class TraceryRecursion {
 	/*
 	* START: TO DO: public static InputStream getInputStream(String[] args)
 	*/
+	public static InputStream getInputStream(String args[]) {
 
+	}
 	/* 
 	* END: TO DO: public static InputStream getInputStream(String[] args)
 	*/
 
-
 	/*
 	* START: TO DO: public static PrintStream getOutputStream(String[] args)
 	*/
+	public static PrintStream getOutputStream(String[] args) {
 
+	}
 
 	/* 
 	* END: TO DO: public static PrintStream getOutputStream(String[] args)
