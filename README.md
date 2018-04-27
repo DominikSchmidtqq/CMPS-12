@@ -9,3 +9,6 @@
 
 ## Assignment 2
 * This assignment implements a linked list to store groups of rhyming words read in from a pronunciation dictionary.  Given a pair of words, use this data structure to determine if two words rhyme. 
+
+## Lab 2
+* We’re coming back to Tracery (Lab 1) with this assignment but instead of always reading the grammar from a file and writing the expanded grammar to the command line, we will also be able to read a grammar from the command line and write the expanded grammar to a file.
