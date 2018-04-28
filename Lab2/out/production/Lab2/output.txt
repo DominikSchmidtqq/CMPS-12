@@ -1,0 +1,6 @@
+
+GRAMMAR:
+place:                "school","the beach","the zoo","Burning Man",
+emotion:              "happy","sad","elated","curious","sleepy",
+origin:               "once #character# and #character# went to #place#",
+name:                 "emily","luis","otavio","anna","charlie",

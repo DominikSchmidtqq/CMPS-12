@@ -69,19 +69,14 @@ public class TraceryRecursion {
 	* START: TO DO: public static InputStream getInputStream(String[] args)
 	*/
 	public static InputStream getInputStream(String args[]) {
-		if (args[0].equals("-in") && args.length > 0) {
-			try {
-				return new FileInputStream(args[1]);
-			} catch (FileNotFoundException e) {
-				System.out.println("Input grammar file does not exist.");
-				return System.in;
-			}
-		} else if (args[2].equals("-in")) {
-			try {
-				return new FileInputStream(args[3]);
-			} catch (FileNotFoundException e) {
-				System.out.println("Input grammar file does not exist.");
-				return System.in;
+		for (int i = 0; i < args.length; i++) {
+			if (args[i].equals("-in")) {
+				try {
+					return new FileInputStream(args[i + 1]);
+				} catch (FileNotFoundException e) {
+					System.out.println("Input grammar file does not exist.");
+					return System.in;
+				}
 			}
 		}
 		return System.in;
@@ -94,19 +89,14 @@ public class TraceryRecursion {
 	* START: TO DO: public static PrintStream getOutputStream(String[] args)
 	*/
 	public static PrintStream getOutputStream(String args[]) {
-		if (args[0].equals("-out") && args.length > 0) {
-			try {
-				return new PrintStream(args[1]);
-			} catch (FileNotFoundException e) {
-				System.out.println("Output file can not be created.");
-				return System.out;
-			}
-		} else if (args[2].equals("-out")) {
-			try {
-				return new PrintStream(args[3]);
-			} catch (FileNotFoundException e) {
-				System.out.println("Output file can not be created.");
-				return System.out;
+		for (int i = 0; i < args.length; i++) {
+			if (args[i].equals("-out")) {
+				try {
+					return new PrintStream(args[i + 1]);
+				} catch (FileNotFoundException e) {
+					System.out.println("Output file can not be created.");
+					return System.out;
+				}
 			}
 		}
 		return System.out;
