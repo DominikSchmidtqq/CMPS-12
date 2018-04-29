@@ -42,19 +42,21 @@ public class TraceryRecursion {
 		/* 
 		* START: TO DO: Make a loop that reads a new line from the BufferedReader line by line and adds it to the grammar
 		*/
-		while(reader.readLine() != null) {
+
+		String currentLine = new String(reader.readLine());
+		while(currentLine != null) {
 
 			/* 
 			* Put your code that takes each line and adds it to the grammar inside the loop. Below is the code from our solution for doing this,
 			* but feel free to substitute this with the code from your own assignment. 
 			*/
-			String line = reader.readLine();
-			String[] ruleString = line.split(":");
+			String[] ruleString = currentLine.split(":");
 			String[] expansions = ruleString[1].split(",");
 			Rule[] rules = new Rule[expansions.length];
 			for(int i=0; i < expansions.length; i++) {
 				rules[i] = new Rule(expansions[i]);
 			}
+			currentLine = reader.readLine();
 			grammar.put(ruleString[0], rules);
 		}
 		/* 
