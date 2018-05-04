@@ -20,17 +20,13 @@ public class MyQueue implements QueueInterface {
 
     //adds an object at the last index of the internal list of the queue
     public void enqueue(Object item) {
-	    if (this.isEmpty()) {
-	        list.add(0, item);
-        } else {
-	        list.add(list.size - 1, item);
-        }
+        list.add(list.size, item);
     }
 
     //returns and removes the object at the first index of the internal list of the queue, if the queue is empty, throws an exception
     public Object dequeue() {
         if (this.isEmpty()) {
-            throw new StackException("Stack is empty");
+            throw new QueueException("Queue is empty");
         } else {
             Object o = list.get(0);
             list.remove(0);
@@ -46,17 +42,18 @@ public class MyQueue implements QueueInterface {
     //return the item at the first index of the internal list if it exists, other throws an exception
     public Object peek() {
 	    if (this.isEmpty()) {
-            throw new StackException("Stack is empty");
+            throw new StackException("Queue is empty");
 	    }
         else {
 	        return list.get(0);
         }
     }
 
+    //toString, used for printing out Queue objects
     public String toString() {
         String queue = new String("(");
         for (int i = 0; i < list.size - 1; i++) {
-            queue  += list.get(i) + ", ";
+            queue += list.get(i) + ", ";
         }
 
         if (this.isEmpty()) {

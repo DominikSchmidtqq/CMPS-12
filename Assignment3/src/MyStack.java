@@ -43,8 +43,6 @@ public class MyStack implements StackInterface {
         }
     }
 
-
-
     //pops all objects by creating a new list
     public void popAll() {
         list = new MyLinkedList();
