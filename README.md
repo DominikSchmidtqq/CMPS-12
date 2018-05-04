@@ -12,3 +12,6 @@
 
 ## Lab 2
 * We’re coming back to Tracery (Lab 1) with this assignment but instead of always reading the grammar from a file and writing the expanded grammar to the command line, we will also be able to read a grammar from the command line and write the expanded grammar to a file.
+
+## Assignment 3
+* In this assignment, you will be implementing Stacks and Queues.  You will then use stacks and queues to test if words are palindromes, and use stacks to decompose phrases into words (to find new palindromes). 
