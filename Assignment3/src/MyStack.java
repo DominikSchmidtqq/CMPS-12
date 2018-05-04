@@ -43,9 +43,27 @@ public class MyStack implements StackInterface {
         }
     }
 
+
+
     //pops all objects by creating a new list
     public void popAll() {
         list = new MyLinkedList();
+    }
+
+    //toString for printing out Stack Objects
+    public String toString() {
+        String stack = new String("(");
+        for (int i = 0; i < list.size - 1; i++) {
+            stack  += list.get(i) + ", ";
+        }
+
+        if (this.isEmpty()) {
+            stack += ")";
+        } else {
+            stack += list.get(list.size - 1) + ")";
+        }
+
+        return stack;
     }
 	/* 
 	* TODO 1: Implement "MyStack"

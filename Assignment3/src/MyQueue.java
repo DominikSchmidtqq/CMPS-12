@@ -52,6 +52,21 @@ public class MyQueue implements QueueInterface {
 	        return list.get(0);
         }
     }
+
+    public String toString() {
+        String queue = new String("(");
+        for (int i = 0; i < list.size - 1; i++) {
+            queue  += list.get(i) + ", ";
+        }
+
+        if (this.isEmpty()) {
+            queue += ")";
+        } else {
+            queue += list.get(list.size - 1) + ")";
+        }
+
+        return queue;
+    }
 	/* 
 	* TODO 2: Implement "MyQueue"
 	*/
