@@ -1,3 +1,5 @@
+import jdk.nashorn.internal.ir.WhileNode;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException; 
@@ -33,13 +35,13 @@ public class Palindrome {
 		String string = new String();
 
 		//pop everything from stack into temp
-		while(!stack.isEmpty()) {
+		while (!stack.isEmpty()) {
 			Object o = stack.pop();
 			temp.push(o);
 		}
 
 		//pop everything from temp into stack
-		while(!temp.isEmpty()) {
+		while (!temp.isEmpty()) {
 			Object o = temp.pop();
 			stack.push(o);
 			string += (String)o;
@@ -51,12 +53,39 @@ public class Palindrome {
 		*/
 	}
 
+	//reverses a String in a stack and removes all non character elements
 	public static String reverseStringAndRemoveNonAlpha(String text) {
 		/* 
 		* TODO 4
 		*/
+		MyStack stack = new MyStack();
 
-		return "";
+		//check if each character in text is alphabetic, if yes adds it to the stack
+		for (int i = 0; i < text.length(); i++) {
+			char currentChar = (Character)text.charAt(i);
+			if (Character.isAlphabetic(currentChar)) {
+				stack.push(currentChar);
+			}
+		}
+
+		//create new string and stack
+		MyStack temp = new MyStack();
+		String string = new String();
+
+		//pop everything from stack to temp
+		while (!stack.isEmpty()) {
+			Object o = stack.pop();
+			temp.push(o);
+		}
+
+		//pop everything from temp to stack and add it to the string
+		while (!temp.isEmpty()) {
+			Object o = temp.pop();
+			stack.push(o);
+			string += (String)o;
+		}
+
+		return string;
 		/* 
 		* TODO 4
 		*/
