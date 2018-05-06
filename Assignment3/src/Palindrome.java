@@ -82,7 +82,7 @@ public class Palindrome {
 		while (!temp.isEmpty()) {
 			Object o = temp.pop();
 			stack.push(o);
-			string += (String)o;
+			string += o;
 		}
 
 		return string;
