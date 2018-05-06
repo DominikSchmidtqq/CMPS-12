@@ -99,7 +99,32 @@ public class Palindrome {
 		* TODO 5: Implement "explorePalindrome"
 		*/
 
-		return false;
+		//Convert the string to lowercase, make a new stack and a new queue
+		text.toLowerCase();
+		MyStack stack = new MyStack();
+		MyQueue queue = new MyQueue();
+
+		//loop through text, add an element of text to stack and queue if the element is alphabetic
+		for (int i = 0; i < text.length(); i++) {
+			char currentChar = (Character)text.charAt(i);
+			if (Character.isAlphabetic(currentChar)) {
+				stack.push(currentChar);
+				queue.enqueue(currentChar);
+			}
+		}
+
+		//create one new string for both the stack and the queue
+		String queueString = new String();
+		String stackString = new String();
+
+		//add each element in stack and queue to the corresponding string
+		while (!queue.isEmpty() || !stack.isEmpty()) {
+			queueString += queue.dequeue();
+			stackString += stack.pop();
+		}
+
+		//return whether or not the strings are equal and therefore checks if palindrome
+		return queueString.equals(stackString);
 		/* 
 		* TODO 5: Implement "explorePalindrome"
 		*/
