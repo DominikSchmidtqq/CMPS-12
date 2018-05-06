@@ -22,12 +22,30 @@ public class Palindrome {
 		return words.toArray(new String[0]);
 	}
 
-
+	//Reverses a String in a stack
 	public static String stackToReverseString(MyStack stack) {
 		/* 
 		* TODO 3
 		*/
-		return "";
+
+		//create new String and temporary stack
+		MyStack temp = new MyStack();
+		String string = new String();
+
+		//pop everything from stack into temp
+		while(!stack.isEmpty()) {
+			Object o = stack.pop();
+			temp.push(o);
+		}
+
+		//pop everything from temp into stack
+		while(!temp.isEmpty()) {
+			Object o = temp.pop();
+			stack.push(o);
+			string += (String)o;
+		}
+
+		return string;
 		/* 
 		* TODO 3
 		*/
