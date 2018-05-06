@@ -138,12 +138,21 @@ public class Palindrome {
 	/* 
 	* TODO 6: Implement "explorePalindrome" & helper function
 	*/
-		
+
+	text.toLowerCase();
+	String reversedText = new String(reverseStringAndRemoveNonAlpha(text));
+
+
+
 
 	/* 
 	* TODO 6
 	*/
 
+	}
+
+	public static void decomposeText(String originalText, String textToDecompose, int index, MyStack decomposition) {
+		
 	}
 
 

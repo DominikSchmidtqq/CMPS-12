@@ -124,9 +124,11 @@
       <file leaf-file-name="Palindrome.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Palindrome.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="122" column="39" lean-forward="true" selection-start-line="122" selection-start-column="39" selection-end-line="122" selection-end-column="39" />
-              <folding />
+            <state relative-caret-position="297">
+              <caret line="154" column="8" lean-forward="false" selection-start-line="154" selection-start-column="8" selection-end-line="154" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -624,7 +626,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7432000" />
+    <option name="totallyTimeSpent" value="8442000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="795" y="0" width="811" height="866" extended-state="0" />
@@ -724,7 +726,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -841,7 +845,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="56" column="55" lean-forward="false" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="55" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1046,7 +1052,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1161,9 +1169,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Palindrome.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="122" column="39" lean-forward="true" selection-start-line="122" selection-start-column="39" selection-end-line="122" selection-end-column="39" />
-          <folding />
+        <state relative-caret-position="297">
+          <caret line="154" column="8" lean-forward="false" selection-start-line="154" selection-start-column="8" selection-end-line="154" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
