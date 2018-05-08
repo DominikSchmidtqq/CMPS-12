@@ -24,7 +24,7 @@ public class Palindrome {
 		return words.toArray(new String[0]);
 	}
 
-	//Reverses a String in a stack
+	//Reverses a String from a stack
 	public static String stackToReverseString(MyStack stack) {
 		/* 
 		* TODO 3
@@ -68,13 +68,10 @@ public class Palindrome {
 			}
 		}
 
-		//create new string and stack
-		MyStack temp = new MyStack();
+		//create a new string
 		String string = new String();
 
-
-
-		//pop everything from temp to stack and add it to the string
+		//pop everything from stack and add it to the string
 		while (!stack.isEmpty()) {
 			Object o = stack.pop();
 			string += o;
@@ -134,10 +131,10 @@ public class Palindrome {
 	* TODO 6: Implement "explorePalindrome" & helper function
 	*/
 
-	//convert text to lowercase and call the decomposition function
-	text = text.toLowerCase();
-	String reversedText = new String(reverseStringAndRemoveNonAlpha(text));
-	decomposeText(text, reversedText, 0, new MyStack());
+		//convert text to lowercase and call the decomposition function
+		text = text.toLowerCase();
+		String reversedText = new String(reverseStringAndRemoveNonAlpha(text));
+		decomposeText(text, reversedText, 0, new MyStack());
 
 	/* 
 	* TODO 6
@@ -147,13 +144,18 @@ public class Palindrome {
 
 	//recursive helper function that that decomposes the string from explorePalindrome into words
 	public static void decomposeText(String originalText, String textToDecompose, int index, MyStack decomposition) {
+		//if a palindrome is found it gets printed
 		if (index == textToDecompose.length()) {
-			System.out.println(originalText + ": " + stackToReverseString(decomposition));
+			System.out.println(originalText + ":  " + stackToReverseString(decomposition));
 		} else {
+			//get all possible palindromes
 			String[] possiblePalindromes = getWords(textToDecompose, index);
+			//loop through all possible palindromes
 			for (int i = 0; i < possiblePalindromes.length; i++) {
+				//push the word to the stack and get the length of the palindrome at index i
 				decomposition.push(possiblePalindromes[i]+ " ");
 				int lengthOfPalindrome = possiblePalindromes[i].length();
+				//recursively find all possible palindromes at the index of the next palindrome in the possible palindromes array
 				decomposeText(originalText, textToDecompose, index + lengthOfPalindrome, decomposition);
 				decomposition.pop();
 			}
