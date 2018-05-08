@@ -132,18 +132,17 @@ public class Palindrome {
 
 
 
-
+	//lists all possible endings that would make a string a palindrome
 	public static void explorePalindrome(String text) {
 
 	/* 
 	* TODO 6: Implement "explorePalindrome" & helper function
 	*/
 
+	//convert text to lowercase and call the decomposition function
 	text.toLowerCase();
 	String reversedText = new String(reverseStringAndRemoveNonAlpha(text));
-
-
-
+	decomposeText(text, reversedText, 0, new MyStack());
 
 	/* 
 	* TODO 6
@@ -151,8 +150,18 @@ public class Palindrome {
 
 	}
 
+	//recursive helper function that that decomposes the string from explorePalindrome into words
 	public static void decomposeText(String originalText, String textToDecompose, int index, MyStack decomposition) {
-		
+		if (index == originalText.length()) {
+			System.out.println(stackToReverseString(decomposition));
+		} else {
+			String[] possiblePalindromes = getWords(textToDecompose, index);
+			for (int i = 0; i < possiblePalindromes.length; i++) {
+				decomposition.push(possiblePalindromes[i]);
+				int lengthOfPalindrome = possiblePalindromes[i].length();
+				decomposeText(originalText, textToDecompose, index + lengthOfPalindrome, decomposition);
+			}
+		}
 	}
 
 
