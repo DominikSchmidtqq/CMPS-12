@@ -100,9 +100,9 @@ public class Palindrome {
 		*/
 
 		//Convert the string to lowercase, make a new stack and a new queue
-		text.toLowerCase();
 		MyStack stack = new MyStack();
 		MyQueue queue = new MyQueue();
+		text = text.toLowerCase();
 
 		//loop through text, add an element of text to stack and queue if the element is alphabetic
 		for (int i = 0; i < text.length(); i++) {
@@ -122,6 +122,7 @@ public class Palindrome {
 			queueString += queue.dequeue();
 			stackString += stack.pop();
 		}
+		System.out.println(queueString +" "+stackString);
 
 		//return whether or not the strings are equal and therefore checks if palindrome
 		return queueString.equals(stackString);
@@ -140,7 +141,7 @@ public class Palindrome {
 	*/
 
 	//convert text to lowercase and call the decomposition function
-	text.toLowerCase();
+	text = text.toLowerCase();
 	String reversedText = new String(reverseStringAndRemoveNonAlpha(text));
 	decomposeText(text, reversedText, 0, new MyStack());
 
@@ -153,13 +154,14 @@ public class Palindrome {
 	//recursive helper function that that decomposes the string from explorePalindrome into words
 	public static void decomposeText(String originalText, String textToDecompose, int index, MyStack decomposition) {
 		if (index == originalText.length()) {
-			System.out.println(stackToReverseString(decomposition));
+			System.out.println(originalText + ": " + stackToReverseString(decomposition));
 		} else {
 			String[] possiblePalindromes = getWords(textToDecompose, index);
 			for (int i = 0; i < possiblePalindromes.length; i++) {
 				decomposition.push(possiblePalindromes[i]);
 				int lengthOfPalindrome = possiblePalindromes[i].length();
 				decomposeText(originalText, textToDecompose, index + lengthOfPalindrome, decomposition);
+				decomposition.pop();
 			}
 		}
 	}
