@@ -72,16 +72,11 @@ public class Palindrome {
 		MyStack temp = new MyStack();
 		String string = new String();
 
-		//pop everything from stack to temp
-		while (!stack.isEmpty()) {
-			Object o = stack.pop();
-			temp.push(o);
-		}
+
 
 		//pop everything from temp to stack and add it to the string
-		while (!temp.isEmpty()) {
-			Object o = temp.pop();
-			stack.push(o);
+		while (!stack.isEmpty()) {
+			Object o = stack.pop();
 			string += o;
 		}
 
@@ -122,7 +117,6 @@ public class Palindrome {
 			queueString += queue.dequeue();
 			stackString += stack.pop();
 		}
-		System.out.println(queueString +" "+stackString);
 
 		//return whether or not the strings are equal and therefore checks if palindrome
 		return queueString.equals(stackString);
@@ -153,12 +147,12 @@ public class Palindrome {
 
 	//recursive helper function that that decomposes the string from explorePalindrome into words
 	public static void decomposeText(String originalText, String textToDecompose, int index, MyStack decomposition) {
-		if (index == originalText.length()) {
+		if (index == textToDecompose.length()) {
 			System.out.println(originalText + ": " + stackToReverseString(decomposition));
 		} else {
 			String[] possiblePalindromes = getWords(textToDecompose, index);
 			for (int i = 0; i < possiblePalindromes.length; i++) {
-				decomposition.push(possiblePalindromes[i]);
+				decomposition.push(possiblePalindromes[i]+ " ");
 				int lengthOfPalindrome = possiblePalindromes[i].length();
 				decomposeText(originalText, textToDecompose, index + lengthOfPalindrome, decomposition);
 				decomposition.pop();
