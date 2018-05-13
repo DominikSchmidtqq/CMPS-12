@@ -8,6 +8,9 @@ char* make_string_from(char* from, int count) {
         array[i] = from[i];
     }
 
+
+
+
     return  array;
 	return NULL;
 	/* TODO 2 */
@@ -19,6 +22,22 @@ int main(int argc, char** argv) {
         printf("%s\n", argv[i]);
     }
  	/* TODO 1 */
+
+    char char_buffer[64];
+    int buffer_index;
+    char* rule;
+    char* expansion;
+
+    while(getchar() != EOF) {
+        if(getchar() == ":") {
+            rule = make_string_from(char_buffer, buffer_index);
+            buffer_index = 0;
+        } else if ((getchar() == ",") || (getchar() == "/n")) {
+            expansion = make_string_from(char_buffer, buffer_index);
+            buffer_index = 0;
+        }
+
+    }
 
   
  	/* TODO 3 */
