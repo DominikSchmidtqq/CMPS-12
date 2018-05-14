@@ -49,7 +49,7 @@ int main(int argc, char** argv) {
             rule = make_string_from(char_buffer, buffer_index);
             //reset the buffer index to 0
             buffer_index = 0;
-            //go to the next characer
+            //go to the next character
             character = (char)getchar();
 
         //current character is a "," or a new line, meaning that all the
