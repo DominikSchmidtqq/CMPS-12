@@ -29,7 +29,8 @@ int main(int argc, char** argv) {
     char* expansion;
 
     while(getchar() != EOF) {
-        if (getchar() == ":") {
+        //char character = (char)getchar();
+        if ((char)getchar() == ':') {
             rule = make_string_from(char_buffer, buffer_index);
             buffer_index = 0;
 
@@ -37,7 +38,7 @@ int main(int argc, char** argv) {
                 free(rule);
                 rule = NULL;
             }
-        } else if ((getchar() == ",") || (getchar() == "/n")) {
+        } else if (((char)getchar() == ',') || ((char)getchar() == '\n')) {
             expansion = make_string_from(char_buffer, buffer_index);
             buffer_index = 0;
             printf("A potential expansion of rule '%s' is '%s'\n", rule, expansion);
@@ -47,12 +48,16 @@ int main(int argc, char** argv) {
                 expansion = NULL;
             }
         } else {
-            char_buffer[buffer_index] = getchar();
+            char_buffer[buffer_index] = (char)getchar();
             buffer_index++;
         }
 
     }
 
+    free(rule);
+    free(expansion);
+    rule = NULL;
+    expansion = NULL;
   
  	/* TODO 3 */
  	/* TODO 3 */
