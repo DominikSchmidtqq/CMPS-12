@@ -15,3 +15,6 @@
 
 ## Assignment 3
 * In this assignment, you will be implementing Stacks and Queues.  You will then use stacks and queues to test if words are palindromes, and use stacks to decompose phrases into words (to find new palindromes). 
+
+## Lab 3
+* This assignment implements a simplified version of Tracery to recursively generate generative text, similar to Lab 1 in the C Language
