@@ -24,8 +24,10 @@ int main(int argc, char** argv) {
     char* rule = NULL;
     char* expansion = NULL;
 
-    while(getchar() != EOF) {
-        char character = (char)getchar();
+    char character = (char)getchar();
+
+    while(character != EOF) {
+
         if (character == ':') {
             if(rule != NULL) {
                 free(rule);
@@ -34,6 +36,7 @@ int main(int argc, char** argv) {
 
             rule = make_string_from(char_buffer, buffer_index);
             buffer_index = 0;
+            character = (char)getchar();
 
         } else if ((character == ',') || (character == '\n')) {
             if (expansion != NULL) {
@@ -44,10 +47,12 @@ int main(int argc, char** argv) {
             expansion = make_string_from(char_buffer, buffer_index);
             buffer_index = 0;
             printf("An expansion of rule '%s' is '%s'\n", rule, expansion);
+            character = (char)getchar();
 
         } else {
             char_buffer[buffer_index] = character;
             buffer_index++;
+            character = (char)getchar();
         }
     }
 
