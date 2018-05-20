@@ -19,13 +19,11 @@
       <file leaf-file-name="MyQueue.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MyQueue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+            <state relative-caret-position="17">
+              <caret line="21" column="36" lean-forward="false" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
               <folding>
                 <element signature="e#607#608#0" expanded="true" />
                 <element signature="e#648#649#0" expanded="true" />
-                <element signature="e#1142#1143#0" expanded="true" />
-                <element signature="e#1180#1181#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -34,7 +32,7 @@
       <file leaf-file-name="MyLinkedList.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MyLinkedList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
+            <state relative-caret-position="2278">
               <caret line="136" column="40" lean-forward="false" selection-start-line="136" selection-start-column="40" selection-end-line="136" selection-end-column="40" />
               <folding />
             </state>
@@ -44,8 +42,8 @@
       <file leaf-file-name="MyStack.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MyStack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="46" column="24" lean-forward="true" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+            <state relative-caret-position="714">
+              <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
               <folding>
                 <element signature="e#183#184#0" expanded="true" />
                 <element signature="e#224#225#0" expanded="true" />
@@ -158,7 +156,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1273" />
+    <option name="x" value="-7" />
     <option name="width" value="1294" />
     <option name="height" value="1047" />
   </component>
@@ -177,6 +175,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -207,7 +206,6 @@
       </pane>
       <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -668,15 +666,16 @@
       <workItem from="1526366808557" duration="1407000" />
       <workItem from="1526632489059" duration="1650000" />
       <workItem from="1526686400957" duration="2064000" />
+      <workItem from="1526853524964" duration="62000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20390000" />
+    <option name="totallyTimeSpent" value="20452000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1273" y="0" width="1294" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="0" width="1294" height="1047" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -733,8 +732,6 @@
           <folding>
             <element signature="e#607#608#0" expanded="true" />
             <element signature="e#648#649#0" expanded="true" />
-            <element signature="e#1142#1143#0" expanded="true" />
-            <element signature="e#1180#1181#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -810,8 +807,6 @@
           <folding>
             <element signature="e#607#608#0" expanded="true" />
             <element signature="e#648#649#0" expanded="true" />
-            <element signature="e#1142#1143#0" expanded="true" />
-            <element signature="e#1180#1181#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -950,8 +945,6 @@
           <folding>
             <element signature="e#607#608#0" expanded="true" />
             <element signature="e#648#649#0" expanded="true" />
-            <element signature="e#1142#1143#0" expanded="true" />
-            <element signature="e#1180#1181#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1061,8 +1054,6 @@
           <folding>
             <element signature="e#607#608#0" expanded="true" />
             <element signature="e#648#649#0" expanded="true" />
-            <element signature="e#1142#1143#0" expanded="true" />
-            <element signature="e#1180#1181#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1126,7 +1117,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyLinkedList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
+        <state relative-caret-position="2278">
           <caret line="136" column="40" lean-forward="false" selection-start-line="136" selection-start-column="40" selection-end-line="136" selection-end-column="40" />
           <folding />
         </state>
@@ -1182,8 +1173,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyStack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="46" column="24" lean-forward="true" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+        <state relative-caret-position="714">
+          <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
           <folding>
             <element signature="e#183#184#0" expanded="true" />
             <element signature="e#224#225#0" expanded="true" />
@@ -1195,13 +1186,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyQueue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+        <state relative-caret-position="17">
+          <caret line="21" column="36" lean-forward="false" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
           <folding>
             <element signature="e#607#608#0" expanded="true" />
             <element signature="e#648#649#0" expanded="true" />
-            <element signature="e#1142#1143#0" expanded="true" />
-            <element signature="e#1180#1181#0" expanded="true" />
           </folding>
         </state>
       </provider>

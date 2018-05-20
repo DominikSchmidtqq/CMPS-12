@@ -1,5 +1,83 @@
 class MyHashtable implements DictionaryInterface {
 
+	//fields for MyHashtable
+	protected int tableSize;
+	protected int size;
+	protected MyLinkedList[] table;
+
+	//inner class, creates an Entry object
+	private class Entry {
+		String key;
+		Object value;
+		//constructor, initializes all fields
+		public Entry() {
+			this.key = "";
+			this.value = null;
+		}
+	}
+
+	//returns whether or not the table is empty
+	public boolean isEmpty() {
+		return this.size > 0;
+	}
+
+	//returns the size(number of key/value pairs stored in the hashtable
+	public int size() {
+		return this.size;
+	}
+
+	public Object put (String key, Object value) {
+
+	}
+
+	//returns the Object at value key
+	public Object get(String key) {
+		//
+		int index = calculateIndex(key);
+		if (table[index] == null) {
+			return null;
+		} else {
+			MyLinkedList listAtIndex = table[index];
+			for (int i = 0; i < listAtIndex.size(); i++) {
+				if (listAtIndex.get(i).equals(key)) {
+					return listAtIndex.get(i);
+				}
+			}
+		}
+	}
+
+	public void remove(String key) {
+
+	}
+
+	//clears the internal array of Linked Lists by creating a new one
+	public void clear() {
+		this.table = new MyLinkedList[0];
+		this.size = 0;
+	}
+
+	public String[] getKeys() {
+
+	}
+
+	//calculates the index of a String in an array given a key String
+	private int calculateIndex(String key) {
+		//convert key to Hashcode and find the absolute value of the index
+		//in the range of 0 to the size of the internal array of Linked Lists - 1
+		int hashCode = key.hashCode();
+		int indexInArray = Math.abs(hashCode) % tableSize;
+		return indexInArray;
+	}
+
+	//constructor for MyHashTable, initializes all fields
+	public MyHashtable(int tableSize) {
+		this.tableSize = tableSize;
+		this.table = new MyLinkedList[tableSize];
+		this.size = 0;
+	}
+
+
+
 	// Returns the size of the biggest bucket (most collisions) in the hashtable. 
 	public int biggestBucket() {
 		int biggestBucket = 0; 
