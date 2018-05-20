@@ -18,3 +18,6 @@
 
 ## Lab 3
 * This assignment implements a simplified version of Tracery to recursively generate generative text, similar to Lab 1 in the C Language
+
+## Assignment 4
+* In this assignment we'll be revisiting the rhyming dictionary from assignment 2. But this time we'll be loading it into a hashtable and using the hashtable ADT to implement a bad poetry generator.  
