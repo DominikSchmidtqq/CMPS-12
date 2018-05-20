@@ -27,30 +27,42 @@ class MyHashtable implements DictionaryInterface {
 	}
 
 	public Object put (String key, Object value) {
+		//initialize the previousValue and calculate the index of the key
 		Object previousValue = null;
+		boolean bucketContainsKey = false;
 		int index = calculateIndex(key);
+
 		if (table[index] == null) {
+			//if the key does not exist in the hashtable at the calculated index
+			//create a new linked list, add a new Entry object with the method arguments,
+			//add the Entry object to the Linked List, add the Linked List to the table at the
+			// calculated index and increment size
 			MyLinkedList list = new MyLinkedList();
 			list.add(0, new Entry(key, value));
 			table[index] = list;
 			size++;
 		} else {
-			boolean bucketContainsKey = false;
+			//if the key does exist in the table loop through the list at index
 			for (int i = 0; i < table[index].size(); i++) {
 				Entry entry = (Entry)table[index].get(i);
 				if (entry.key.equals(key)) {
+					//if the key of the Entry at i equals the key argument of the method
+					//store the previous value of the entry and set the value field of entry
+					//equal to the value argument of the method
 					previousValue = entry.value;
 					entry.key = key;
 					bucketContainsKey = true;
 				}
 			}
-			if (!bucketContainsKey) {
-				table[index].add(0, new Entry(key, value));
-				size++;
-				return null;
-			} else if (bucketContainsKey) {
-				return previousValue;
-			}
+		}
+		if (!bucketContainsKey) {
+			//if the bucket does not contain the key at all, add a new Entry with the method arguments and increment size
+			table[index].add(0, new Entry(key, value));
+			size++;
+			return null;
+		} else {
+			//return the previousValue of the entry that was modified
+			return previousValue;
 		}
 	}
 
@@ -74,8 +86,20 @@ class MyHashtable implements DictionaryInterface {
 		}
 	}
 
+	//removes a key from the hashtable
 	public void remove(String key) {
-
+		//calculate the index
+		int index = calculateIndex(key);
+		if (table[index] != null) {
+			//if the key exists in the hashtable, remove it from the internal linked list and decrement size
+			MyLinkedList list = table[index];
+			for (int i = 0 ; i < list.size; i++) {
+				if (list.get(i).equals(key)) {
+					list.remove(i);
+					size--;
+				}
+			}
+		}
 	}
 
 	//clears the internal array of Linked Lists by creating a new one
