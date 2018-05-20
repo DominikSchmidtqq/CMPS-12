@@ -6,13 +6,13 @@ class MyHashtable implements DictionaryInterface {
 	protected MyLinkedList[] table;
 
 	//inner class, creates an Entry object
-	private class Entry {
+	protected class Entry {
 		String key;
 		Object value;
 		//constructor, initializes all fields
-		public Entry() {
-			this.key = "";
-			this.value = null;
+		public Entry(String key, Object value)  {
+			this.key = key;
+			this.value = value;
 		}
 	}
 
@@ -27,22 +27,50 @@ class MyHashtable implements DictionaryInterface {
 	}
 
 	public Object put (String key, Object value) {
-
+		Object previousValue = null;
+		int index = calculateIndex(key);
+		if (table[index] == null) {
+			MyLinkedList list = new MyLinkedList();
+			list.add(0, new Entry(key, value));
+			table[index] = list;
+			size++;
+		} else {
+			boolean bucketContainsKey = false;
+			for (int i = 0; i < table[index].size(); i++) {
+				Entry entry = (Entry)table[index].get(i);
+				if (entry.key.equals(key)) {
+					previousValue = entry.value;
+					entry.key = key;
+					bucketContainsKey = true;
+				}
+			}
+			if (!bucketContainsKey) {
+				table[index].add(0, new Entry(key, value));
+				size++;
+				return null;
+			} else if (bucketContainsKey) {
+				return previousValue;
+			}
+		}
 	}
 
 	//returns the Object at value key
 	public Object get(String key) {
-		//
+		//hashes the key
 		int index = calculateIndex(key);
 		if (table[index] == null) {
 			return null;
 		} else {
 			MyLinkedList listAtIndex = table[index];
 			for (int i = 0; i < listAtIndex.size(); i++) {
-				if (listAtIndex.get(i).equals(key)) {
-					return listAtIndex.get(i);
+				//loop through list at index and return the value at key
+				Entry entry = (Entry)listAtIndex.get(i);
+				if (entry.key.equals(key)) {
+					return ((Entry)listAtIndex.get(i)).value;
 				}
+
 			}
+			return null;
 		}
 	}
 
