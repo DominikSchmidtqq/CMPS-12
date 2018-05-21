@@ -41,6 +41,7 @@ class MyHashtable implements DictionaryInterface {
 			list.add(0, new Entry(key, value));
 			table[index] = list;
 			size++;
+
 		} else {
 			//if the key does exist in the table loop through the list at index
 			for (int i = 0; i < table[index].size(); i++) {
@@ -50,20 +51,21 @@ class MyHashtable implements DictionaryInterface {
 					//store the previous value of the entry and set the value field of entry
 					//equal to the value argument of the method
 					previousValue = entry.value;
-					entry.key = key;
+					entry.value = value;
 					bucketContainsKey = true;
 				}
 			}
+
+			if (!bucketContainsKey) {
+				//if the bucket does not contain the key at all, add a new Entry with the method arguments and increment size
+				table[index].add(0, new Entry(key, value));
+				size++;
+			}
 		}
-		if (!bucketContainsKey) {
-			//if the bucket does not contain the key at all, add a new Entry with the method arguments and increment size
-			table[index].add(0, new Entry(key, value));
-			size++;
-			return null;
-		} else {
-			//return the previousValue of the entry that was modified
-			return previousValue;
-		}
+
+		//return the previousValue of the entry that was modified, returns null if value was not modified
+		return previousValue;
+
 	}
 
 	//returns the Object at value key
@@ -80,7 +82,6 @@ class MyHashtable implements DictionaryInterface {
 				if (entry.key.equals(key)) {
 					return ((Entry)listAtIndex.get(i)).value;
 				}
-
 			}
 			return null;
 		}
@@ -108,8 +109,23 @@ class MyHashtable implements DictionaryInterface {
 		this.size = 0;
 	}
 
+	//returns all keys that are stored in the hashtable
 	public String[] getKeys() {
+		//create a String array and an int that keeps track of the index at which keys are stored in the array
+		String[] keys = new String[tableSize];
+		int indexInArray = 0;
 
+		for (int i = 0; i < table.length; i++) {
+			//loop through the table
+			if (table[i] != null) {
+				for (int j = 0; j < table[i].size(); j++) {
+					//if there is a linked list at index i, loop through it and add the keys to the String array
+					keys[indexInArray] = ((Entry)table[i].get(j)).key;
+					indexInArray++;
+				}
+			}
+		}
+		return keys;
 	}
 
 	//calculates the index of a String in an array given a key String
