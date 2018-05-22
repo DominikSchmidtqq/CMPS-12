@@ -135,7 +135,16 @@ public class RhymingDict {
 
 	// TO DO #3: Remove any of the unrhymables
 	public static void removeUnrhymables(DictionaryInterface rhymingDict) {
-
+		//create a String array of all keys in the rhymingDict
+		String[] keys = rhymingDict.getKeys();
+		for (int i = 0; i < keys.length; i++) {
+			//loop through keys and get the linked list associated with index i in keys
+			MyLinkedList list = (MyLinkedList)rhymingDict.get(keys[i]);
+			if (list.size == 1) {
+				//if the size of this list is 1 remove it because none of the words rhyme
+				rhymingDict.remove(keys[i]);
+			}
+		}
 	} 
 	
 	// Once you've implemented your dictionary, you can use the testDictionary function to test 
@@ -192,5 +201,4 @@ public class RhymingDict {
 			createRhyme(rhymingDict);
 		}
 	}
-
 }
