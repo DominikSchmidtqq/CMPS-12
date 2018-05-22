@@ -18,7 +18,7 @@ class MyHashtable implements DictionaryInterface {
 
 	//returns whether or not the table is empty
 	public boolean isEmpty() {
-		return this.size > 0;
+		return this.size <= 0;
 	}
 
 	//returns the size(number of key/value pairs stored in the hashtable
@@ -72,10 +72,10 @@ class MyHashtable implements DictionaryInterface {
 	public Object get(String key) {
 		//hashes the key
 		int index = calculateIndex(key);
-		if (table[index] == null) {
+		if (this.table[index] == null) {
 			return null;
 		} else {
-			MyLinkedList listAtIndex = table[index];
+			MyLinkedList listAtIndex = this.table[index];
 			for (int i = 0; i < listAtIndex.size(); i++) {
 				//loop through list at index and return the value at key
 				Entry entry = (Entry)listAtIndex.get(i);
@@ -95,7 +95,7 @@ class MyHashtable implements DictionaryInterface {
 			//if the key exists in the hashtable, remove it from the internal linked list and decrement size
 			MyLinkedList list = table[index];
 			for (int i = 0 ; i < list.size; i++) {
-				if (list.get(i).equals(key)) {
+				if (((Entry)list.get(i)).key.equals(key)) {
 					list.remove(i);
 					size--;
 				}
@@ -105,7 +105,7 @@ class MyHashtable implements DictionaryInterface {
 
 	//clears the internal array of Linked Lists by creating a new one
 	public void clear() {
-		this.table = new MyLinkedList[0];
+		this.table = new MyLinkedList[tableSize];
 		this.size = 0;
 	}
 
@@ -146,21 +146,21 @@ class MyHashtable implements DictionaryInterface {
 
 
 
-	// Returns the size of the biggest bucket (most collisions) in the hashtable. 
+	// Returns the size of the biggest bucket (most collisions) in the hashtable.
 	public int biggestBucket() {
-		int biggestBucket = 0; 
+		int biggestBucket = 0;
 		for(int i = 0; i < table.length; i++) {
-			// Loop through the table looking for non-null locations. 
+			// Loop through the table looking for non-null locations.
 			if (table[i] != null) {
 				// If you find a non-null location, compare the bucket size against the largest
 				// bucket size found so far. If the current bucket size is bigger, set biggestBucket
-				// to this new size. 
+				// to this new size.
 				MyLinkedList bucket = table[i];
 				if (biggestBucket < bucket.size())
 					biggestBucket = bucket.size();
 			}
 		}
-		return biggestBucket; // Return the size of the biggest bucket found. 
+		return biggestBucket; // Return the size of the biggest bucket found.
 	}
 
 	// Returns the average bucket length. Gives a sense of how many collisions are happening overall.
@@ -168,7 +168,7 @@ class MyHashtable implements DictionaryInterface {
 		float bucketCount = 0; // Number of buckets (non-null table locations)
 		float bucketSizeSum = 0; // Sum of the size of all buckets
 		for(int i = 0; i < table.length; i++) {
-			// Loop through the table 
+			// Loop through the table
 			if (table[i] != null) {
 				// For a non-null location, increment the bucketCount and add to the bucketSizeSum
 				MyLinkedList bucket = table[i];
@@ -177,8 +177,8 @@ class MyHashtable implements DictionaryInterface {
 			}
 		}
 
-		// Divide bucketSizeSum by the number of buckets to get an average bucket length. 
-		return bucketSizeSum/bucketCount; 
+		// Divide bucketSizeSum by the number of buckets to get an average bucket length.
+		return bucketSizeSum/bucketCount;
 	}
 
 	public String toString() {
@@ -192,6 +192,6 @@ class MyHashtable implements DictionaryInterface {
 				}
 			}
 		}
-		return s; 
+		return s;
 	}
 }
