@@ -58,8 +58,22 @@ public class RhymingDict {
 
 	// TO DO 2: Store a rhymeGroup (key) and word (value) in the Dictionary (hashtable)
 	public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
+		//get the word and RhymeGroup of a line
+		String Word = getWord(line);
+		String RhymeGroup = getRhymeGroup(line);
 
-
+		if (rhymingDict.get(RhymeGroup) == null) {
+			//if the rhymegroup does not exists in the hashtable, create a new list,
+			//add the word to the list and and the list to the hashtable
+			MySortedLinkedList list = new MySortedLinkedList();
+			list.add(Word);
+			rhymingDict.put(RhymeGroup, list);
+		} else {
+			//if the rhymegroup is already in the table, get the list that stores the rhymegroup
+			//and add the word to that list
+			MySortedLinkedList list = (MySortedLinkedList)rhymingDict.get(RhymeGroup);
+			list.add(Word);
+		}
 	}
 
 	// Get two random indexes that are not the same
