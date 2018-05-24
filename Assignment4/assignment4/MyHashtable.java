@@ -54,9 +54,7 @@ class MyHashtable implements DictionaryInterface {
 					entry.value = value;
 					bucketContainsKey = true;
 				}
-			}
-
-			if (!bucketContainsKey) {
+			} if (!bucketContainsKey) {
 				//if the bucket does not contain the key at all, add a new Entry with the method arguments and increment size
 				table[index].add(0, new Entry(key, value));
 				size++;
@@ -112,10 +110,10 @@ class MyHashtable implements DictionaryInterface {
 	//returns all keys that are stored in the hashtable
 	public String[] getKeys() {
 		//create a String array and an int that keeps track of the index at which keys are stored in the array
-		String[] keys = new String[tableSize];
+		String[] keys = new String[size];
 		int indexInArray = 0;
 
-		for (int i = 0; i < table.length; i++) {
+		for (int i = 0; i < tableSize; i++) {
 			//loop through the table
 			if (table[i] != null) {
 				for (int j = 0; j < table[i].size(); j++) {

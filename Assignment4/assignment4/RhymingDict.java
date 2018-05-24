@@ -73,6 +73,7 @@ public class RhymingDict {
 			//and add the word to that list
 			MySortedLinkedList list = (MySortedLinkedList)rhymingDict.get(RhymeGroup);
 			list.add(Word);
+
 		}
 	}
 
@@ -139,7 +140,7 @@ public class RhymingDict {
 		String[] keys = rhymingDict.getKeys();
 		for (int i = 0; i < keys.length; i++) {
 			//loop through keys and get the linked list associated with index i in keys
-			MyLinkedList list = (MyLinkedList)rhymingDict.get(keys[i]);
+			MySortedLinkedList list = (MySortedLinkedList)rhymingDict.get(keys[i]);
 			if (list.size == 1) {
 				//if the size of this list is 1 remove it because none of the words rhyme
 				rhymingDict.remove(keys[i]);
