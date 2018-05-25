@@ -5,7 +5,8 @@ typedef struct node_type{
 	/*
 	* TODO 1
 	*/
-	
+	void* data;
+    struct node_type* next;
 	/*
 	* TODO 1
 	*/
@@ -17,7 +18,8 @@ typedef struct {
 	/*
 	* TODO 1
 	*/
-	
+	Node* head;
+    int size;
 	/*
 	* TODO 1
 	*/

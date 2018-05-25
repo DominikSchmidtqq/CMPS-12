@@ -6,8 +6,10 @@ Node* make_node(void* data, Node* next){
 	/* 
 	* TODO 2
 	*/ 
-	
-	return NULL; // replace this
+	Node* node = malloc(sizeof(Node));
+    node -> data = data;
+    node -> next = next;
+	return node; // replace this
 	/* 
 	* TODO 2
 	*/ 
