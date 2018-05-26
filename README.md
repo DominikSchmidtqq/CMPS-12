@@ -4,20 +4,23 @@
 * Tracery (tracery.io) is a simple text-expansion langauge, running about 7000 chatbots on Twitter
 * This assignment implements a simplified version of Tracery to recursively generate generative text
 
+## Lab 2
+* We’re coming back to Tracery (Lab 1) with this assignment but instead of always reading the grammar from a file and writing the expanded grammar to the command line, we will also be able to read a grammar from the command line and write the expanded grammar to a file.
+
+## Lab 3
+* This assignment implements a simplified version of Tracery to recursively generate generative text, similar to Lab 1 in the C Language
+
+## Lab 4
+* This assignment implements the Tracery grammar with linked lists to recursively generate text
+
 ## Assignment 1
 * This assignment implements Merge Sort and Binary Search to count the number of times certain words occur in Mary Shelley's novel "Frankenstein" and compares the efficiency of different algorithms
 
 ## Assignment 2
 * This assignment implements a linked list to store groups of rhyming words read in from a pronunciation dictionary.  Given a pair of words, use this data structure to determine if two words rhyme. 
 
-## Lab 2
-* We’re coming back to Tracery (Lab 1) with this assignment but instead of always reading the grammar from a file and writing the expanded grammar to the command line, we will also be able to read a grammar from the command line and write the expanded grammar to a file.
-
 ## Assignment 3
 * In this assignment, you will be implementing Stacks and Queues.  You will then use stacks and queues to test if words are palindromes, and use stacks to decompose phrases into words (to find new palindromes). 
-
-## Lab 3
-* This assignment implements a simplified version of Tracery to recursively generate generative text, similar to Lab 1 in the C Language
 
 ## Assignment 4
 * In this assignment we'll be revisiting the rhyming dictionary from assignment 2. But this time we'll be loading it into a hashtable and using the hashtable ADT to implement a bad poetry generator.  
