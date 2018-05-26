@@ -2,12 +2,12 @@
 #define TRACERY_HELPERS_H
 #include "list.h"
 
-typedef struct 
-{
+typedef struct {
   /*
    * TODO 0
    */
-  // define the things a rule struct needs
+    char* key;
+    List* expansions;
   /*
    * TODO 0
    */

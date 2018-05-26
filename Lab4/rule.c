@@ -6,21 +6,42 @@
 #include "rule.h"
 #include "helpers.h"
 
-Rule* make_rule(char* key){
+Rule* make_rule(char* key) {
   /*
     TODO 3
   */
-  return NULL; // replace this
+    //constructor for rule, allocates memory for a new rule,
+    //sets the key pointer to the argument and
+    //sets the expansion pointer to a new linked list
+    Rule* rule = malloc(sizeof(Rule));
+    rule -> key = key;
+    rule -> expansions = make_list();
+
+    return rule;
   /*
     TODO 3
   */
 }
 
-void free_rule(Rule* rule){
+void free_rule(Rule* rule) {
   /*
     TODO 3
   */
-	
+    if (rule -> key != NULL) {
+        //if the key pointer of the rule is not NULL
+        //frees the key pointer and
+        //sets the key pointer to NULL
+        free(rule -> key);
+        rule -> key = NULL;
+    }
+
+    if (rule -> expansions != NULL) {
+        //if the expansion pointer of the rule is not NULL
+        //frees the expansion by freeing the linked list and
+        //sets the expansion pointer to NULL
+        free_list(rule -> expansions);
+        rule -> expansions = NULL;
+    }
   /*
     TODO 3
   */
@@ -28,12 +49,12 @@ void free_rule(Rule* rule){
 }
 
 
-List* read_grammar(char* filename){
+List* read_grammar(char* filename) {
    
   /*
    * TODO 4A
    */ 
-  //Construct a new List* called grammar that we will fill up in the following code
+
   /* 
    * TODO 4A
    */
@@ -45,7 +66,7 @@ List* read_grammar(char* filename){
 
   int number_of_rules = 0;
   for (char current = fgetc(input_file); current != EOF; current = fgetc(input_file)){
-    if (current == ':'){
+      if (current == ':'){
       
 	  
       char* key = calloc(buffer_index+1,sizeof(char));
@@ -60,9 +81,8 @@ List* read_grammar(char* filename){
        */ 
       buffer_index = 0;
     }
-    else if (current == ',' || current == '\n'){
-      
-      char* expansion = calloc(buffer_index+1,sizeof(char));      
+    else if (current == ',' || current == '\n') {
+      char* expansion = calloc(buffer_index+1,sizeof(char));
       memcpy(expansion,buffer,buffer_index);
 		
       /*
