@@ -123,20 +123,35 @@ char* expand(char* text, List* grammar){
   /*
    * BONUS TODO
    */
+
+    //splits the text by '#'
+    //makes a new list that will store all possible expansion
 	List* splitText = split(text, "#");
     List* possibleExpansion = make_list();
-    for (int i = 0; i < splitText -> size; i++) {
-        char* textAtIndex = copy_string(get(splitText, i));
-        if (i % 2 == 0) {
 
+    for (int i = 0; i < splitText -> size; i++) {
+        //loops through the processed text
+        //copies the text at the current Index into a new String for memory safety
+        char* textAtIndex = copy_string(get(splitText, i));
+
+        if (i % 2 == 0) {
+            //if the index is even
+            //adds the text at the current index to the end of the possible expansion
             add(possibleExpansion, possibleExpansion -> size, textAtIndex);
         } else {
+            //if the index is odd
             for (int j = 0; j < grammar -> size; j++) {
+                //loops through the grammar
+                //gets the rule, expansions, and key at the current index
                 Rule* currentRule = get(grammar, j);
                 List* currentList = currentRule -> expansions;
                 char* keyAtIndex = currentRule -> key;
 
                 if (strcmp(textAtIndex, keyAtIndex) == 0) {
+                    //if the text at the current index in the split text is the same as the key
+                    //at the index in the grammar
+                    //picks a random expansion from the current expansion and recursively adds the random expansion
+                    //to the possible expansions
                     char* randomExpansion = get_random(currentList);
                     add(possibleExpansion, possibleExpansion -> size, expand(randomExpansion, grammar));
                 }
@@ -144,6 +159,8 @@ char* expand(char* text, List* grammar){
         }
     }
 
+    //converts the resulting linked list to a string
+    //frees all lists and returns the string
     char* result = join(possibleExpansion);
     free_list(possibleExpansion);
     free_list(splitText);
