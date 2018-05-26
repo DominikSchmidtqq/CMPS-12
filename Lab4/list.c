@@ -1,12 +1,17 @@
 #include <stdlib.h>
 #include "list.h"
 #include <stdio.h>
+#include <assert.h>
 
 Node* make_node(void* data, Node* next){
 	/* 
 	* TODO 2
-	*/ 
-	Node* node = malloc(sizeof(Node));
+	*/
+
+    //allocates memory for a new node
+    //sets the data pointer to the argument that was passed
+    //sets the next pointer to the argument that was passed
+    Node* node = malloc(sizeof(Node));
     node -> data = data;
     node -> next = next;
 
@@ -19,7 +24,11 @@ Node* make_node(void* data, Node* next){
 List* make_list(){
 	/* 
 	* TODO 2
-	*/ 
+	*/
+
+    //allocates memory for a new list
+    //sets the head pointer to NULL
+    //sets the size pointer to 0
 	List* list = malloc(sizeof(List));
     list -> head = NULL;
     list -> size = 0;
@@ -88,7 +97,7 @@ void add(List* list, int index, void* data) {
 	*/
 
     //if index is either less than 0 or bigger than the size of the list
-    //asserts "Index is out of bounds
+    //asserts "Index is out of bounds"
     assert( !(index > list->size || index < 0) && "Index is out of bounds");
 
     if (list -> size == 0) {
@@ -121,9 +130,22 @@ void add(List* list, int index, void* data) {
 void* get(List* list, int index){
 	/* 
 	* TODO 2
-	*/ 
-	
-	return NULL; // replace this
+	*/
+
+    //if index is either less than 0 or bigger than the size of the list
+    //asserts "Index is out of bounds"
+    assert( !(index >= list->size || index < 0) && "Index is out of bounds");
+
+    //gets the head of the list
+    Node* current = list -> head;
+
+    for (int i = 0; i < index; i++) {
+        //loops through list up to index
+        //sets current node to the next pointer of the current node
+        current = current -> next;
+    }
+
+    return current -> data;
 	/* 
 	* TODO 2
 	*/ 
@@ -133,8 +155,20 @@ void set(List* list, int index, void* data) {
 	
 	/* 
 	* TODO 2
-	*/ 
-	
+	*/
+
+    //gets the head of the list
+	Node* current = list -> head;
+
+    for (int i = 0; i < index; i++) {
+        //loops through the list up to index
+        //sets the current node to the next pointer of current
+        current = current -> next;
+    }
+
+    //sets the data pointer of current to the argument
+    current -> data = data;
+
 	/* 
 	* TODO 2
 	*/ 

@@ -5,8 +5,8 @@
 #include <assert.h>
 
 //UNCOMMENT THIS ONCE YOU HAVE IMPLEMENTED LIST
-//#include "list.h"
-//#include "helpers.h"
+#include "list.h"
+#include "helpers.h"
 
 
 //UNCOMMENT THIS ONCE YOU HAVE IMPLEMENTED RULE
@@ -20,8 +20,8 @@ struct string{
 int main(int argc, char** argv){
 
 
-  /* 
-     LIST TEST CODE
+    //LIST TEST CODE
+    /*
      List* list = make_list();
      List* reversed = make_list();
      for (int ii = 0; ii < argc; ii++){
@@ -41,11 +41,11 @@ int main(int argc, char** argv){
 	
      free_list(list);
      free_list(reversed);
+	/*
 	
-	
-  */
 
-  /*
+
+
     GRAMMAR TEST CODE
     
     List* grammar = read_grammar("grammar-story.txt");
