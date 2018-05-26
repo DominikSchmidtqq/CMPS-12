@@ -123,7 +123,29 @@ char* expand(char* text, List* grammar){
   /*
    * BONUS TODO
    */
-	
+	List* splitText = split(text, "#");
+    List* possibleExpansion = make_list();
+     for (int i = 0; i < splitText -> size; i++) {
+         char* textAtIndex = copy_string(get(splitText, i));
+         if (i % 2 == 0) {
+
+             add(possibleExpansion, 0, textAtIndex);
+         } else {
+             for (int j = 0; j < grammar -> size; j++) {
+                 List* currentList = get(grammar, j);
+                 char* keyAtIndex = currentList -> key;
+
+                 if (strcmp(textAtIndex, keyAtIndex) == 0) {
+                     char* randomExpansion = get_random(currentList);
+                     add(possibleExpansion, expand(randomExpansion, grammar));
+                 }
+             }
+         }
+     }
+    char* result = join(possibleExpansion);
+    free_list(possibleExpansion);
+    free_list(splitText);
+    return result;
   /*
    * BONUS TODO
    */

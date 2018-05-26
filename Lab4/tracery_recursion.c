@@ -47,20 +47,20 @@ int main(int argc, char** argv){
 
 
     //GRAMMAR TEST CODE
-    
+    /*
     List* grammar = read_grammar("grammar-story.txt");
     print_grammar(grammar);
-
+    */
 
 
 
   
 	
 
-   /** BONUS TODO
+    //BONUS TODO
 	
 	
-   List* grammar = read_grammar("grammar-story.txt");
+   grammar = read_grammar("grammar-story.txt");
    if (argc == 1){
    srand(time(NULL));
    }
@@ -77,8 +77,8 @@ int main(int argc, char** argv){
    }
    free_list(grammar);
 	
-   * BONUS TODO 
-   */
+   // BONUS TODO
+
 	
   return 0;
 }
