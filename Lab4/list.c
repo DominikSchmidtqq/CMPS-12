@@ -98,7 +98,7 @@ void add(List* list, int index, void* data) {
 
     //if index is either less than 0 or bigger than the size of the list
     //asserts "Index is out of bounds"
-    assert( !(index > list->size || index < 0) && "Index is out of bounds");
+    assert( !(index > list -> size || index < 0) && "Index is out of bounds");
 
     if (list -> size == 0) {
         //if the list is empty
@@ -134,7 +134,7 @@ void* get(List* list, int index){
 
     //if index is either less than 0 or bigger than the size of the list
     //asserts "Index is out of bounds"
-    assert( !(index >= list->size || index < 0) && "Index is out of bounds");
+    assert( !(index >= list -> size || index < 0) && "Index is out of bounds");
 
     //gets the head of the list
     Node* current = list -> head;

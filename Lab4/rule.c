@@ -54,7 +54,7 @@ List* read_grammar(char* filename) {
   /*
    * TODO 4A
    */ 
-
+    List* grammar = make_list();
   /* 
    * TODO 4A
    */
@@ -74,7 +74,8 @@ List* read_grammar(char* filename) {
       /*
        * TODO 4B
        */ 
-	   
+	   Rule* rule = make_rule(key);
+       add(grammar, grammar -> size, rule);
       //Construct a new Rule* and add it to grammar 
       /*
        * TODO 4B
@@ -87,9 +88,12 @@ List* read_grammar(char* filename) {
 		
       /*
        * TODO 4C
-       */ 
+       */
+      Rule* rule = get(grammar, grammar -> size - 1);
+      add(rule -> expansions, rule -> expansions -> size, expansion);
       //Get the last Rule* inserted into grammar and add expansion to it 
       /*
+       *
        * TODO 4C
        */ 
       buffer_index = 0;
@@ -106,7 +110,7 @@ List* read_grammar(char* filename) {
   /*
    * TODO 4D
    */ 
-  return NULL; // replace this to return the grammar we just filled up
+  return grammar; // replace this to return the grammar we just filled up
   /*
    * TODO 4D
    */ 

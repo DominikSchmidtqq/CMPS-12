@@ -10,7 +10,7 @@
 
 
 //UNCOMMENT THIS ONCE YOU HAVE IMPLEMENTED RULE
-//#include "rule.h"
+#include "rule.h"
 
 struct string{
   char* characters;
@@ -41,23 +41,23 @@ int main(int argc, char** argv){
 	
      free_list(list);
      free_list(reversed);
-	/*
+	*/
 	
 
 
 
-    GRAMMAR TEST CODE
+    //GRAMMAR TEST CODE
     
     List* grammar = read_grammar("grammar-story.txt");
     print_grammar(grammar);
 
-  */
+
 
 
   
 	
-  /* 
-   * BONUS TODO 
+
+   /** BONUS TODO
 	
 	
    List* grammar = read_grammar("grammar-story.txt");
