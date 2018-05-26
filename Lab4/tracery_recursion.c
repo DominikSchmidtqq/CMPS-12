@@ -47,10 +47,10 @@ int main(int argc, char** argv){
 
 
     //GRAMMAR TEST CODE
-    /*
+
     List* grammar = read_grammar("grammar-story.txt");
     print_grammar(grammar);
-    */
+
 
 
 
