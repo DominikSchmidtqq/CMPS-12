@@ -164,6 +164,7 @@ char* expand(char* text, List* grammar){
     char* result = join(possibleExpansion);
     free_list(possibleExpansion);
     free_list(splitText);
+
     return result;
   /*
    * BONUS TODO
