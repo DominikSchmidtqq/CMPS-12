@@ -1,13 +1,88 @@
 public class BinarySearchTree implements BSTInterface {
 
+	protected BSTNode root;
+	public BinarySearchTree() {
+		//constructor for BinarySearchTree, initializes the root to null
+		this.root = null;
+	}
+
+	protected class BSTNode {
+		//inner class BSTNode, has an item field, and a left and a right BSTNode field
+		protected String item;
+		protected BSTNode left, right;
+		public BSTNode(String item) {
+			//constructor for BSTNode, initializes all fields
+			this.item = item;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+	//returns whether or not the BST is empty
+	public boolean isEmpty() {
+		return (root == null);
+	}
+
+	//clears the BST by setting the root to null
+	public void makeEmpty() {
+		this.root = null;
+	}
+
+	public MyQueue inOrder() {
+
+	}
+
+	public MyQueue preOrder() {
+
+	}
+
+	public MyQueue postOrder() {
+
+	}
+
+	//returns whether or not the BST contains a String
+	public boolean contains(String s) {
+		//returns whether or not the recursive helper function found the String
+		return recursiveSearch(root, s);
+	}
+
+	//adds a String s into the BST
+	public void put(String s) {
+		//sets the root to the subtree returned by the recursive helper
+		root = recursiveInsert(root, s);
+	}
+
+	//deletes the string s from the BST
+	public void delete(String s) {
+
+	}
+
 	// TODO: Fill this in and call it from contains()
 	protected boolean recursiveSearch(BSTNode node, String s) {
-		
+		if (node == null) {
+			return false;
+		} else if (node.item.equals(s)) {
+			return true;
+		} else if (s.compareTo(node.item) < 0) {
+			return recursiveSearch(node.left, s);
+		} else {
+			return recursiveSearch(node.right, s);
+		}
 	}
 
 	// TODO: Fill this in and call it from put()
 	protected BSTNode recursiveInsert(BSTNode node, String s){
-	
+		if (node == null) {
+			return new BSTNode(s);
+		} else if (node != null) {
+			if (s.compareTo(node.item) < 0) {
+				node.left = recursiveInsert(node.left, s);
+			} else if (s.compareTo(node.item) > 0) {
+				node.right = recursiveInsert(node.right, s);
+			}
+		}
+
+		return node;
 	}
 
 	// TODO: Fill this in and call it from delete()
