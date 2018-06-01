@@ -89,19 +89,22 @@ void insert(Dictionary D, char* key, char* value) {
 
 }
 
-//
-char* lookup(Dictionary D, char* key, char* value) {
+//returns the value in the Dictionary associated with key
+char* lookup(Dictionary D, char* key) {
 
 }
 
+//deletes the Entry associated with the key
 void delete(Dictionary D, char* key) {
 
 }
 
+//removes all Entries from the Dictionary
 void makeEmpty(Dictionary D) {
 
 }
 
+//prints the contents of the Dictionary into a file
 void printDictionary(FILE* out, Dictionary D) {
 
 }
