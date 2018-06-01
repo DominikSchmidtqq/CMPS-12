@@ -16,7 +16,6 @@ typedef struct EntryObj {
 
 // allows EntryObj* to be called Entry in this file
 typedef struct EntryObj* Entry;
-typedef struct DictionaryObj* Dictionary;
 
 /*
  *
@@ -24,18 +23,31 @@ typedef struct DictionaryObj* Dictionary;
  *
 */
 Dictionary newDictionary(int tableSize) {
-    Dictionary dictionary = malloc(sizeof(Dictionary));
+    Dictionary dictionary = malloc(sizeof(DictionaryObj*));
     dictionary -> tableSize = tableSize;
     dictionary -> size = 0;
-    dictionary -> table = make_list();
+    dictionary -> table = calloc(tableSize, sizeof(List*));
+
     return dictionary;
 }
 
+void freeDictionary(Dictionary* pD) {
+
+    for (int i = 0; i < pD -> tableSize; i++) {
+        freeEntry(pD -> get(pD -> table, i));
+    }
+    free_list(pD -> table);
+
+    pD -> tableSize = 0;
+    pD -> size = 0;
+    pD = NULL;
+}
 
 Entry newEntry(char* key, char* value) {
     Entry entry = malloc(sizeof(Entry));
     entry -> key = key;
     entry -> value = value;
+
     return entry;
 }
 
