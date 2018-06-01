@@ -216,8 +216,35 @@ public class BinarySearchTree implements BSTInterface {
 
 	// Extra Credit 
 
-	// TODO: If doing the extra credit, fill this in and call it from balanceBST()
-	/* protected BSTNode balanceRecursive(String[] array, int first, int last) {
+    public void balanceBST() {
+	    MyQueue inOrder = inOrder();
+	    MyQueue temp = new MyQueue();
 
-	} */
+	    int itemsInQueue = 0;
+	    while (!inOrder.isEmpty()) {
+	        String currentItem = (String)inOrder.dequeue();
+	        temp.enqueue(currentItem);
+	        itemsInQueue++;
+        }
+
+        String[] items = new String[itemsInQueue];
+
+	    for (int i = 0; i < itemsInQueue ; i++) {
+	        items[i] = (String)temp.dequeue();
+        }
+
+        makeEmpty();
+        root = balanceRecursive(items, 0, itemsInQueue - 1);
+    }
+	// TODO: If doing the extra credit, fill this in and call it from balanceBST()
+	 protected BSTNode balanceRecursive(String[] array, int first, int last) {
+        if (first > last) {
+            return null;
+        }
+
+	    BSTNode node = new BSTNode(array[(first + last) / 2]);
+        node.left = balanceRecursive(array, 0, (first + last) / 2 - 1);
+        node.right = balanceRecursive(array, (first + last) / 2 + 1, last);
+        return node;
+	}
 }

@@ -50,7 +50,7 @@ public class TestBST{
 
 		// Testing the balancing
 		// Make a very unbalanced tree
-		/* while (!inOrder.isEmpty()) {
+		while (!inOrder.isEmpty()) {
 			String s = (String)inOrder.dequeue(); 
 			tree.put(s);
 			System.out.println(s);
@@ -59,6 +59,6 @@ public class TestBST{
 
 		tree.balanceBST();
 		tree.printTreeStructure();
-		*/
+
 	}
 }
