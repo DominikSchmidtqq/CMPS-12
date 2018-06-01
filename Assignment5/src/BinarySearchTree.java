@@ -29,15 +29,21 @@ public class BinarySearchTree implements BSTInterface {
 	}
 
 	public MyQueue inOrder() {
-
+		MyQueue StringsInOrder = new MyQueue();
+		inOrderRecursive(root, StringsInOrder);
+		return StringsInOrder;
 	}
 
 	public MyQueue preOrder() {
-
+		MyQueue StringPreOrder = new MyQueue();
+		preOrderRecursive(root, StringPreOrder);
+		return StringPreOrder;
 	}
 
 	public MyQueue postOrder() {
-
+		MyQueue StringPostOrder = new MyQueue();
+		postOrderRecursive(root, StringPostOrder);
+		return StringPostOrder;
 	}
 
 	//returns whether or not the BST contains a String
@@ -131,18 +137,30 @@ public class BinarySearchTree implements BSTInterface {
 
 	// TODO: Fill this in and call it from inOrder()
 	protected void inOrderRecursive(BSTNode node, MyQueue queue) {
-
+		if (node != null) {
+			inOrderRecursive(node.left, queue);
+			queue.enqueue(node.item);
+			inOrderRecursive(node.right, queue);
+		}
 	}
 
 
 	// TODO: Fill this in and call it from preOrder()
 	protected void preOrderRecursive(BSTNode node, MyQueue queue) {
-
+		if (node != null) {
+			queue.enqueue(node.item);
+			preOrderRecursive(node.left, queue);
+			preOrderRecursive(node.right, queue);
+		}
 	}
 
 	// TODO: Fill this in and call it from postOrder()
 	protected void postOrderRecursive(BSTNode node, MyQueue queue) {
-
+		if (node != null) {
+			postOrderRecursive(node.left, queue);
+			postOrderRecursive(node.right, queue);
+			queue.enqueue(node.item);
+		}
 	}
 
 	// Prints out the tree structure, using indenting to show the different levels of the tree
