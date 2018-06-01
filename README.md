@@ -13,7 +13,7 @@
 * In this assignment we'll be revisiting the rhyming dictionary from assignment 2. But this time we'll be loading it into a hashtable and using the hashtable ADT to implement a bad poetry generator.  
 
 ## Assignment 5
-*
+* In this assignment, you will be creating a binary search tree (BST). The tree will be storing words (​Strings​), which you will insert, as well as delete, recursively. You will also be implementing tree traversals, which are different orders in which you recursively visit the items in a tree.
 
 ## Lab 1
 * Tracery (tracery.io) is a simple text-expansion langauge, running about 7000 chatbots on Twitter
