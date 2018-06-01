@@ -216,12 +216,16 @@ public class BinarySearchTree implements BSTInterface {
 
 	// Extra Credit 
 
+    //balances a binary search tree
     public void balanceBST() {
+	    //creates a new queue that stores the inOrder traversal of the bst
+        //creates an empty queue
 	    MyQueue inOrder = inOrder();
 	    MyQueue temp = new MyQueue();
 
 	    int itemsInQueue = 0;
 	    while (!inOrder.isEmpty()) {
+	        //gets the size of the inOrder queue and stores all elements in the temporary queue
 	        String currentItem = (String)inOrder.dequeue();
 	        temp.enqueue(currentItem);
 	        itemsInQueue++;
@@ -230,21 +234,29 @@ public class BinarySearchTree implements BSTInterface {
         String[] items = new String[itemsInQueue];
 
 	    for (int i = 0; i < itemsInQueue ; i++) {
+	        //stores all the inOrder nodes in a String array
 	        items[i] = (String)temp.dequeue();
         }
 
+        //empties the tree and sets it equal to the balanced version of itself
         makeEmpty();
         root = balanceRecursive(items, 0, itemsInQueue - 1);
     }
-	// TODO: If doing the extra credit, fill this in and call it from balanceBST()
-	 protected BSTNode balanceRecursive(String[] array, int first, int last) {
-        if (first > last) {
-            return null;
+
+    // TODO: If doing the extra credit, fill this in and call it from balanceBST()
+    //recursive helper method for balancing the bst
+    protected BSTNode balanceRecursive(String[] array, int first, int last) {
+	    if (first > last) {
+	        return null;
         }
 
-	    BSTNode node = new BSTNode(array[(first + last) / 2]);
-        node.left = balanceRecursive(array, 0, (first + last) / 2 - 1);
-        node.right = balanceRecursive(array, (first + last) / 2 + 1, last);
+        //get the middle index and set the corresponding item to the root
+        int middle = (first + last) / 2;
+	    BSTNode node = new BSTNode(array[middle]);
+	    //recursively construct the left and right children of the root
+        node.left = balanceRecursive(array, first, middle - 1);
+        node.right = balanceRecursive(array, middle + 1, last);
+
         return node;
 	}
 }
