@@ -54,7 +54,8 @@ public class BinarySearchTree implements BSTInterface {
 
 	//deletes the string s from the BST
 	public void delete(String s) {
-
+		//sets the root to the subtree returned by the recursive helper
+		root = recursiveRemove(root, s);
 	}
 
 	// TODO: Fill this in and call it from contains()
@@ -87,17 +88,44 @@ public class BinarySearchTree implements BSTInterface {
 
 	// TODO: Fill this in and call it from delete()
 	protected BSTNode recursiveRemove(BSTNode node, String s) {
+		if (node != null) {
+			if (s.compareTo(node.item) < 0) {
+				node.left = recursiveRemove(node.left, s);
+			} else if (s.compareTo(node.item) > 0) {
+				node.right = recursiveRemove(node.right, s);
+			} else {
+				node = deleteNode(node);
+			}
+		}
 
+		return node;
 	}
 	
 	// TODO: Fill this in and call it from recursiveRemove()
 	protected BSTNode deleteNode(BSTNode node) {
+		if ((node.right == null) && (node.left == null)) {
+			node = null;
+		} else if ((node.left != null) && (node.right == null)) {
+			node = node.left;
+		} else if ((node.left == null) && (node.right != null)) {
+			node = node.right;
+		} else {
+			node.item = getSmallest(node.right);
+			node.right = recursiveRemove(node.right, node.item);
+		}
 
+		return node;
 	}
 
 	// TODO: Fill this in and call it from deleteNode()
 	protected String getSmallest(BSTNode node) {
+		String smallest = node.item;
+		while (node.left != null) {
+			smallest = node.left.item;
+			node = node.left;
+		}
 
+		return smallest;
 	}
 
 

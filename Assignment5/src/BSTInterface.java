@@ -17,5 +17,5 @@ interface BSTInterface {
 	public void delete(String s); // Removes a String from the BST. If the String isn't in the BST, does nothing. 
 
 	// Comment in for bonus section
-	public void balanceBST(); // Rebalances the tree 
+	//public void balanceBST(); // Rebalances the tree
 }
