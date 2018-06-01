@@ -22,6 +22,8 @@ typedef struct EntryObj* Entry;
  * YOUR FUNCTION IMPLEMENTATIONS GO BELOW HERE
  *
 */
+
+//constructor for Dictionary, allocates memory and initializes it's variables
 Dictionary newDictionary(int tableSize) {
     Dictionary dictionary = malloc(sizeof(DictionaryObj*));
     dictionary -> tableSize = tableSize;
@@ -31,8 +33,9 @@ Dictionary newDictionary(int tableSize) {
     return dictionary;
 }
 
+//frees the Dictionary, first frees the internal table, then resets all variables
+// and sets the Dictionary to NULL
 void freeDictionary(Dictionary* pD) {
-
     for (int i = 0; i < pD -> tableSize; i++) {
         freeEntry(pD -> get(pD -> table, i));
     }
@@ -43,6 +46,7 @@ void freeDictionary(Dictionary* pD) {
     pD = NULL;
 }
 
+//constructor for Entry, allocates memory and initializes it's variables
 Entry newEntry(char* key, char* value) {
     Entry entry = malloc(sizeof(Entry));
     entry -> key = key;
@@ -51,6 +55,7 @@ Entry newEntry(char* key, char* value) {
     return entry;
 }
 
+//frees the variables of Entry and sets it to NULL
 void freeEntry(Entry* pE) {
     if (pE -> key != NULL) {
         free(pE -> key);
@@ -63,6 +68,42 @@ void freeEntry(Entry* pE) {
     }
 
     pE = NULL;
+}
+
+//returns 0 if the table is empty, 1 if it is not empty
+int isEmpty(Dictionary D) {
+    if (D -> size == 0) {
+        return 0;
+    } else if (D -> size >= 1) {
+        return 1;
+    }
+}
+
+//returns the number of keys/values in the Dictionary
+int size(Dictionary D) {
+    return D -> size;
+}
+
+//adds a new key/value pair  into the Dictionary
+void insert(Dictionary D, char* key, char* value) {
+
+}
+
+//
+char* lookup(Dictionary D, char* key, char* value) {
+
+}
+
+void delete(Dictionary D, char* key) {
+
+}
+
+void makeEmpty(Dictionary D) {
+
+}
+
+void printDictionary(FILE* out, Dictionary D) {
+
 }
 
 /*
