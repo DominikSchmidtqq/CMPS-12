@@ -4,22 +4,54 @@
 #include "list.h"
 
 typedef struct DictionaryObj {
-
+    int  tableSize;
+    int size;
+    List** table;
 } DictionaryObj;
 
 typedef struct EntryObj {
-
+    char* key;
+    char* value;
 } EntryObj;
 
 // allows EntryObj* to be called Entry in this file
 typedef struct EntryObj* Entry;
+typedef struct DictionaryObj* Dictionary;
 
 /*
  *
  * YOUR FUNCTION IMPLEMENTATIONS GO BELOW HERE
  *
 */
+Dictionary newDictionary(int tableSize) {
+    Dictionary dictionary = malloc(sizeof(Dictionary));
+    dictionary -> tableSize = tableSize;
+    dictionary -> size = 0;
+    dictionary -> table = make_list();
+    return dictionary;
+}
 
+
+Entry newEntry(char* key, char* value) {
+    Entry entry = malloc(sizeof(Entry));
+    entry -> key = key;
+    entry -> value = value;
+    return entry;
+}
+
+void freeEntry(Entry* pE) {
+    if (pE -> key != NULL) {
+        free(pE -> key);
+        pE -> key = NULL;
+    }
+
+    if (pE -> value != NULL) {
+        free(pE -> value);
+        pE -> value = NULL;
+    }
+
+    pE = NULL;
+}
 
 /*
  *
