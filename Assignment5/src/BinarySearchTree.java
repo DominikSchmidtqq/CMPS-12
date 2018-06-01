@@ -28,18 +28,21 @@ public class BinarySearchTree implements BSTInterface {
 		this.root = null;
 	}
 
+	//returns the result of an in order traversal
 	public MyQueue inOrder() {
 		MyQueue StringsInOrder = new MyQueue();
 		inOrderRecursive(root, StringsInOrder);
 		return StringsInOrder;
 	}
 
+	//returns the result of a pre order traversal
 	public MyQueue preOrder() {
 		MyQueue StringPreOrder = new MyQueue();
 		preOrderRecursive(root, StringPreOrder);
 		return StringPreOrder;
 	}
 
+	//returns the result of a post order traversal
 	public MyQueue postOrder() {
 		MyQueue StringPostOrder = new MyQueue();
 		postOrderRecursive(root, StringPostOrder);
@@ -65,14 +68,19 @@ public class BinarySearchTree implements BSTInterface {
 	}
 
 	// TODO: Fill this in and call it from contains()
+	//recursive helper for contains, recursively searches for a string
 	protected boolean recursiveSearch(BSTNode node, String s) {
 		if (node == null) {
+			//if the node is null returns false
 			return false;
 		} else if (node.item.equals(s)) {
+			//if the node is the same as the string returns true
 			return true;
 		} else if (s.compareTo(node.item) < 0) {
+			//if the string is smaller than the current node, goes left in the tree
 			return recursiveSearch(node.left, s);
 		} else {
+			//if the string is bigger than the current node, goes right in the tree
 			return recursiveSearch(node.right, s);
 		}
 	}
@@ -80,11 +88,15 @@ public class BinarySearchTree implements BSTInterface {
 	// TODO: Fill this in and call it from put()
 	protected BSTNode recursiveInsert(BSTNode node, String s){
 		if (node == null) {
+			//if the current node is null, makes a new node with the passed string and returns that node
 			return new BSTNode(s);
 		} else if (node != null) {
+			//if the current node is not null
 			if (s.compareTo(node.item) < 0) {
+				//if the string is smaller than the current item goes left
 				node.left = recursiveInsert(node.left, s);
 			} else if (s.compareTo(node.item) > 0) {
+				//if the string is bigger than the current item, goes right
 				node.right = recursiveInsert(node.right, s);
 			}
 		}
@@ -93,13 +105,18 @@ public class BinarySearchTree implements BSTInterface {
 	}
 
 	// TODO: Fill this in and call it from delete()
+	//recursive helper for delete
 	protected BSTNode recursiveRemove(BSTNode node, String s) {
 		if (node != null) {
+			//if the node is not null
 			if (s.compareTo(node.item) < 0) {
+				//if the string is smaller than the current item, goes left
 				node.left = recursiveRemove(node.left, s);
 			} else if (s.compareTo(node.item) > 0) {
+				//if the string is bigger than the current item, goes right
 				node.right = recursiveRemove(node.right, s);
 			} else {
+				//if the string is the same as the current item, deletes the node
 				node = deleteNode(node);
 			}
 		}
@@ -108,14 +125,20 @@ public class BinarySearchTree implements BSTInterface {
 	}
 	
 	// TODO: Fill this in and call it from recursiveRemove()
+	//deletes a node
 	protected BSTNode deleteNode(BSTNode node) {
 		if ((node.right == null) && (node.left == null)) {
+			//if node has no children, sets node to null
 			node = null;
 		} else if ((node.left != null) && (node.right == null)) {
+			//if node has only a left child, promotes the left child
 			node = node.left;
 		} else if ((node.left == null) && (node.right != null)) {
+			//if node has only a right child, promotes the right child
 			node = node.right;
 		} else {
+			//if node has two children, gets the smallest child of the right child
+			//promotes that child
 			node.item = getSmallest(node.right);
 			node.right = recursiveRemove(node.right, node.item);
 		}
@@ -124,9 +147,11 @@ public class BinarySearchTree implements BSTInterface {
 	}
 
 	// TODO: Fill this in and call it from deleteNode()
+	//gets the smallest item of a subtree
 	protected String getSmallest(BSTNode node) {
 		String smallest = node.item;
 		while (node.left != null) {
+			//keeps going left until null
 			smallest = node.left.item;
 			node = node.left;
 		}
@@ -134,8 +159,8 @@ public class BinarySearchTree implements BSTInterface {
 		return smallest;
 	}
 
-
 	// TODO: Fill this in and call it from inOrder()
+	//recursive helper for inOrder
 	protected void inOrderRecursive(BSTNode node, MyQueue queue) {
 		if (node != null) {
 			inOrderRecursive(node.left, queue);
@@ -144,8 +169,8 @@ public class BinarySearchTree implements BSTInterface {
 		}
 	}
 
-
 	// TODO: Fill this in and call it from preOrder()
+	//recursive helper for preOrder()
 	protected void preOrderRecursive(BSTNode node, MyQueue queue) {
 		if (node != null) {
 			queue.enqueue(node.item);
@@ -155,6 +180,7 @@ public class BinarySearchTree implements BSTInterface {
 	}
 
 	// TODO: Fill this in and call it from postOrder()
+	//recursive helper for postOrder()
 	protected void postOrderRecursive(BSTNode node, MyQueue queue) {
 		if (node != null) {
 			postOrderRecursive(node.left, queue);
