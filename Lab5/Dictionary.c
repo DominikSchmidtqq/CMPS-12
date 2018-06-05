@@ -73,9 +73,9 @@ void freeEntry(Entry* pE) {
 //returns 0 if the table is empty, 1 if it is not empty
 int isEmpty(Dictionary D) {
     if (D -> size == 0) {
-        return 0;
-    } else if (D -> size >= 1) {
         return 1;
+    } else if (D -> size >= 1) {
+        return 0;
     }
 }
 
@@ -86,7 +86,11 @@ int size(Dictionary D) {
 
 //adds a new key/value pair  into the Dictionary
 void insert(Dictionary D, char* key, char* value) {
+    int index = hash(D, key);
 
+    if (D -> table[index] == NULL) {
+
+    }
 }
 
 //returns the value in the Dictionary associated with key
@@ -106,7 +110,13 @@ void makeEmpty(Dictionary D) {
 
 //prints the contents of the Dictionary into a file
 void printDictionary(FILE* out, Dictionary D) {
-
+    for (int i = 0; i < D -> tableSize; i++) {
+        if (D -> table[i] != NULL) {
+            for (int j = 0; j < D  -> table[i] -> size; j++) {
+                fprintf(out, "Key=%s Value=%s\n", (Entry) get(D->table[i], j)->key, (Entry) get(D->table[i], j)->value);
+            }
+        }
+    }
 }
 
 /*
