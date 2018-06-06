@@ -76,33 +76,41 @@ Dictionary newDictionary(int tableSize) {
 //frees the Dictionary, first frees the internal table, then resets all variables
 // and sets the Dictionary to NULL
 void freeDictionary(Dictionary* pD) {
-    //
+    //sets the passed Dictionary pointer to a Dictionary called dictionary
     Dictionary dictionary = (*pD);
 
-    if(dictionary != NULL) {
-        if(dictionary -> table != NULL) {
-            for(int i = 0; i < dictionary -> tableSize; i++) {
-                if(dictionary -> table[i] != NULL) {
-                    for(int j = 0; j < dictionary -> table[i]->size; j++) {
+    if (dictionary != NULL) {
+        //if the dictionary is not empty
+        if (dictionary -> table != NULL) {
+            //if the array of linked lists of dictionary is not empty
+            for (int i = 0; i < dictionary -> tableSize; i++) {
+                //loops through the array of linked lists
+                if (dictionary -> table[i] != NULL) {
+                    //if the linked list in the array at the current index is not empty
+                    for (int j = 0; j < dictionary -> table[i]->size; j++) {
+                        //loops through the linked list at the current index in the array
+                        //gets the item at the current index in the linked list and casts it to an Entry
                         Entry entry = (Entry)get(dictionary -> table[i], j);
 
-                        if(entry != NULL) {
+                        if (entry != NULL) {
+                            //if the entry is not empty
+                            //frees the entry passing a pointer to entry as an argument, and sets entry to NULL
                             freeEntry(&entry);
                             entry = NULL;
                         }
-
+                        //removes the node that previously stored the entry that was removed
                         remove_node(dictionary -> table[i], j);
                     }
-
+                    //frees the linked list at the current index and sets the index in array to NULL
                     free(dictionary -> table[i]);
                     dictionary -> table[i] = NULL;
                 }
             }
-
+            //frees the array of the dictionary and sets it to NULL
             free(dictionary -> table);
             dictionary -> table = NULL;
         }
-
+        //frees the dictionary and sets it as well as the pointer from the arguments to NULL
         free(dictionary);
         dictionary = NULL;
         pD = NULL;
@@ -112,48 +120,72 @@ void freeDictionary(Dictionary* pD) {
 //returns 0 if the table is empty, 1 if it is not empty
 int isEmpty(Dictionary D) {
     if (D -> size == 0) {
+        //returns 1/true if the Dictionary is empty
         return 1;
     } else if (D -> size >= 1) {
+        //return 0/false if the Dictionary is not empty
         return 0;
     }
 }
 
-//returns the number of keys/values in the Dictionary
+//returns the number of keys/values stored  in the Dictionary
 int size(Dictionary D) {
+    //initializes a counter to 0
     int size = 0;
+
     for (int i = 0; i < D -> tableSize; i++) {
+        //loops through the table array
         if (D -> table[i] != NULL) {
+            //if the linked list at the current index in the array is not empty
             for (int j = 0; j < D->table[i]->size; j++) {
+                //loops through the linked list at the current index and increments size
                 size++;
             }
         }
     }
+
     return size;
 }
 
+//this needs to be here for things to compile
 int hash(Dictionary D, char* key);
 
 //adds a new key/value pair  into the Dictionary
 void insert(Dictionary D, char* key, char* value) {
+    //computes an index in the array of the dictionary by hashing the key parameter
     int index = hash(D, key);
 
     if (D -> table[index] == NULL) {
+        //if the linked list in the table array of the dictionary at the computed index is empty
+        //creates a new list, creates a new Entry with the key and value parameters
         List* list = make_list();
         Entry entry = newEntry(key, value);
+        //adds the entry to the front of the list
         add(list, 0, entry);
+        //sets the list at the computed index in the table array to the list storing the entry
+        //increments the size of the number of keys/values stored
         D -> table[index] = list;
         D -> size++;
+        //exits the method
         return;
     } else {
+        //if the linked list in the table array of the dictionary at the computed index is not empty
         for (int i = 0; i < D -> table[index] -> size; i++) {
+            //loops through the list at the computed index of the table array
+            //gets the item at the current index of the list and casts it to an Entry
             Entry currentEntry = (Entry)get(D -> table[index], i);
             if (strcmp(currentEntry -> key, key) == 0) {
+                //if the key of the current entry in the list is the same as the key parameter
+                //sets the value of the current entry to the value parameter
                 currentEntry -> value = value;
+                //exits the method
                 return;
             }
         }
     }
 
+    //creates a new entry with the key and value parameters, adds the entry to the front of the list at the
+    //computed index in the table array and increments the number of keys/values stored in the dictionary
     Entry entry = newEntry(key, value);
     add(D -> table[index], 0, entry);
     D -> size++;
@@ -161,29 +193,48 @@ void insert(Dictionary D, char* key, char* value) {
 
 //returns the value in the Dictionary associated with key
 char* lookup(Dictionary D, char* key) {
+    //computes an index in the array of the dictionary by hashing the key parameter
     int index = hash(D, key);
+
     if (D -> table[index] == NULL) {
+        //if the table array at the computed index is empty, returns NULL
         return NULL;
     } else {
+        //if the table array at the computed index is not empty
         for (int i = 0; i < D -> table[index] -> size; i++) {
-            Entry entry = (Entry)get(D -> table[index], i);
-            if (strcmp(entry -> key, key) == 0) {
-                return entry -> value;
+            //loops through the list at the computed index of table array
+            //gets the item at the current index of the list and casts it to an Entry
+            Entry currentEntry = (Entry)get(D -> table[index], i);
+            if (strcmp(currentEntry -> key, key) == 0) {
+                //if the key of the current entry is the same as the key parameter
+                //returns the value of the current entry
+                return currentEntry -> value;
             }
         }
     }
+    //if the key is not found in the table array of Dictionary, returns NULL
     return NULL;
 }
 
 //deletes the Entry associated with the key
 void delete(Dictionary D, char* key) {
+    //computes an index in the array of the dictionary by hashing the key parameter
     int index = hash(D, key);
+
     if (D -> table[index] == NULL) {
+        //if the table array at the computed index is empty
+        //exits the method
         return;
     } else {
+        //if the table array at the computed index is not empty
         for (int i = 0; i < D -> table[index] -> size; i++) {
-            Entry entry = (Entry)get(D -> table[index], i);
-            if (strcmp(entry -> key, key) == 0) {
+            //loops through the list at the computed index of table array
+            //gets the item at the current index of the list and casts it to an Entry
+            Entry currentEntry = (Entry)get(D -> table[index], i);
+            if (strcmp(currentEntry -> key, key) == 0) {
+                //if the key of the current entry is the same as the key parameter
+                //gets the node associated with the key, removes it, frees it and decrements the number of keys/values stored
+                //in the dictionary
                 void* node = get(D -> table[index], i);
                 free(node);
                 remove_node(D -> table[index], i);
@@ -196,32 +247,48 @@ void delete(Dictionary D, char* key) {
 //removes all Entries from the Dictionary
 void makeEmpty(Dictionary D) {
     if ((D != NULL) && (D -> table != NULL)) {
+        //if the dictionary is not empty and the table array of the dictionary is not empty
         for (int i = 0; i < D -> tableSize; i++) {
+            //loops through the table array
             if (D -> table[i] != NULL) {
+                //if the list at the current index in the table array is not empty
                 for (int j = 0; j < D -> table[i] -> size; j++) {
-                    Entry entry = (Entry)get(D -> table[i], j);
-                    if (entry != NULL) {
-                        free(entry);
-                        entry = NULL;
+                    //loops through the list at the computed index of table array
+                    //gets the item at the current index of the list and casts it to an Entry
+                    Entry currentEntry = (Entry)get(D -> table[i], j);
+                    if (currentEntry != NULL) {
+                        //if the current entry is not empty, frees the current entry and sets it to NULL
+                        free(currentEntry);
+                        currentEntry = NULL;
                     }
+                    //removes the node at the current index in the list
                     remove_node(D -> table[i], j);
                 }
+                //frees the list at the current index in the table array of the dictionary and sets the list to NULL
                 free(D -> table[i]);
                 D -> table[i] = NULL;
             }
         }
+        //frees the table array of the dictionary and sets it to NULL
+        free(D -> table);
+        D -> table = NULL;
     }
-
+    //sets the number of keys/values stored in the dictionary to 0
     D -> size = 0;
 }
 
 //prints the contents of the Dictionary into a file
 void printDictionary(FILE* out, Dictionary D) {
     for (int i = 0; i < D -> tableSize; i++) {
+        //loops through the table array
         if (D -> table[i] != NULL) {
+            //if list at the current index in the table array is not empty
             for (int j = 0; j < D  -> table[i] -> size; j++) {
-                Entry entry = (Entry)get(D -> table[i], j);
-                fprintf(out, "%s %s\n", entry -> key, entry -> value);
+                //loops through the list at the computed index of table array
+                //gets the item at the current index of the list and casts it to an Entry
+                //and prints the key and value of the current entry
+                Entry currentEntry = (Entry)get(D -> table[i], j);
+                fprintf(out, "%s %s\n", currentEntry -> key, currentEntry -> value);
             }
         }
     }
