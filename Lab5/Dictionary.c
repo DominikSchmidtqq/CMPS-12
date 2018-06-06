@@ -106,7 +106,15 @@ int isEmpty(Dictionary D) {
 
 //returns the number of keys/values in the Dictionary
 int size(Dictionary D) {
-    return D -> size;
+    int size = 0;
+    for (int i = 0; i < D -> tableSize; i++) {
+        if (D -> table[i] != NULL) {
+            for (int j = 0; j < D->table[i]->size; j++) {
+                size++;
+            }
+        }
+    }
+    return size;
 }
 
 int hash(Dictionary D, char* key);
@@ -121,6 +129,7 @@ void insert(Dictionary D, char* key, char* value) {
         add(list, 0, entry);
         D -> table[index] = list;
         D -> size++;
+        return;
     } else {
         for (int i = 0; i < D -> table[index] -> size; i++) {
             Entry currentEntry = (Entry)get(D -> table[index], i);
