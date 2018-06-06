@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "Dictionary.h"
 #include "list.h"
+#include <string.h>
 
 typedef struct DictionaryObj {
     int  tableSize;
@@ -23,6 +24,32 @@ typedef struct EntryObj* Entry;
  *
 */
 
+//constructor for Entry, allocates memory and initializes it's variables
+Entry newEntry(char* key, char* value) {
+    Entry entry = malloc(sizeof(Entry));
+    entry -> key = key;
+    entry -> value = value;
+
+    return entry;
+}
+
+//frees the variables of Entry and sets it to NULL
+void freeEntry(Entry* pE) {
+    Entry entry = (*pE);
+    if (entry -> key != NULL) {
+        //free(entry -> key);
+        entry -> key = NULL;
+    }
+
+    if (entry -> value != NULL) {
+        //free(entry -> value);
+        entry -> value = NULL;
+    }
+
+    free(entry);
+    entry = NULL;
+}
+
 //constructor for Dictionary, allocates memory and initializes it's variables
 Dictionary newDictionary(int tableSize) {
     Dictionary dictionary = malloc(sizeof(DictionaryObj*));
@@ -36,51 +63,36 @@ Dictionary newDictionary(int tableSize) {
 //frees the Dictionary, first frees the internal table, then resets all variables
 // and sets the Dictionary to NULL
 void freeDictionary(Dictionary* pD) {
-    if(pD != NULL && pD -> table != NULL) {
-        for (int i = 0; i < pD->tableSize; i++) {
-            if (pD->table[i] != NULL) {
-                for (int j = 0; j < pD->table[i]->size; j++) {
-                    Entry entry = (Entry) get(pD->table[i], j);
-                    if (entry != NULL) {
-                        freeEntry(&entry);
-                        entry = NULL;
+    Dictionary dictionary = (*pD);
+
+    if(dictionary != NULL) {
+        if(dictionary -> table != NULL) {
+            for(int i = 0; i < dictionary -> tableSize; i++) {
+                if(dictionary -> table[i] != NULL) {
+                    for(int j = 0; j < dictionary -> table[i]->size; j++) {
+                        Entry entry = (Entry)get(dictionary -> table[i], j);
+
+                        if(entry != NULL) {
+                            freeEntry(&entry);
+                            entry = NULL;
+                        }
+
+                        remove_node(dictionary -> table[i], j);
                     }
-                    remove_node(pD->table[i], j); // Free the node as well
+
+                    free(dictionary -> table[i]);
+                    dictionary -> table[i] = NULL;
                 }
-                free(pD->table[i]);
-                pD->table[i] = NULL;
             }
+
+            free(dictionary -> table);
+            dictionary -> table = NULL;
         }
+
+        free(dictionary);
+        dictionary = NULL;
+        pD = NULL;
     }
-
-    pD -> tableSize = 0;
-    pD -> size = 0;
-    pD = NULL;
-}
-
-//constructor for Entry, allocates memory and initializes it's variables
-Entry newEntry(char* key, char* value) {
-    Entry entry = malloc(sizeof(Entry));
-    entry -> key = key;
-    entry -> value = value;
-
-    return entry;
-}
- 
-//frees the variables of Entry and sets it to NULL
-void freeEntry(Entry* pE) {
-    if (pE -> key != NULL) {
-        free(pE -> key);
-        pE -> key = NULL;
-    }
-
-    if (pE -> value != NULL) {
-        free(pE -> value);
-        pE -> value = NULL;
-    }
-
-    free(pE);
-    pE = NULL;
 }
 
 //returns 0 if the table is empty, 1 if it is not empty
@@ -97,12 +109,14 @@ int size(Dictionary D) {
     return D -> size;
 }
 
+int hash(Dictionary D, char* key);
+
 //adds a new key/value pair  into the Dictionary
 void insert(Dictionary D, char* key, char* value) {
     int index = hash(D, key);
 
     if (D -> table[index] == NULL) {
-        List list = make_list();
+        List* list = make_list();
         Entry entry = newEntry(key, value);
         add(list, 0, entry);
         D -> table[index] = list;
@@ -164,7 +178,7 @@ void makeEmpty(Dictionary D) {
                 for (int j = 0; j < D -> table[i] -> size; j++) {
                     Entry entry = (Entry)get(D -> table[i], j);
                     if (entry != NULL) {
-                        free(&entry);
+                        free(entry);
                         entry = NULL;
                     }
                     remove_node(D -> table[i], j);
@@ -173,9 +187,8 @@ void makeEmpty(Dictionary D) {
                 D -> table[i] = NULL;
             }
         }
-        free(D -> table[i]);
-        D -> table = NULL;
     }
+
     D -> size = 0;
 }
 
@@ -184,7 +197,8 @@ void printDictionary(FILE* out, Dictionary D) {
     for (int i = 0; i < D -> tableSize; i++) {
         if (D -> table[i] != NULL) {
             for (int j = 0; j < D  -> table[i] -> size; j++) {
-                fprintf(out, "Key=%s Value=%s\n", (Entry)get(D->table[i], j) -> key, (Entry)get(D->table[i], j) -> value);
+                Entry entry = (Entry)get(D -> table[i], j);
+                fprintf(out, "%s %s\n", entry -> key, entry -> value);
             }
         }
     }
@@ -217,9 +231,9 @@ unsigned int rotate_left(unsigned int value, int shift) {
 
 // pre_hash()
 // turn a string into an unsigned int
-unsigned int pre_hash(char* input) { 
+unsigned int pre_hash(char* input) {
    unsigned int result = 0xBAE86554;
-   while (*input) { 
+   while (*input) {
       result ^= *input++;
       result = rotate_left(result, 5);
    }
