@@ -36,10 +36,22 @@ Dictionary newDictionary(int tableSize) {
 //frees the Dictionary, first frees the internal table, then resets all variables
 // and sets the Dictionary to NULL
 void freeDictionary(Dictionary* pD) {
-    for (int i = 0; i < pD -> tableSize; i++) {
-        freeEntry(pD -> get(pD -> table, i));
+    if(pD != NULL && pD -> table != NULL) {
+        for (int i = 0; i < pD->tableSize; i++) {
+            if (pD->table[i] != NULL) {
+                for (int j = 0; j < pD->table[i]->size; j++) {
+                    Entry entry = (Entry) get(pD->table[i], j);
+                    if (entry != NULL) {
+                        freeEntry(&entry);
+                        entry = NULL;
+                    }
+                    remove_node(pD->table[i], j); // Free the node as well
+                }
+                free(pD->table[i]);
+                pD->table[i] = NULL;
+            }
+        }
     }
-    free_list(pD -> table);
 
     pD -> tableSize = 0;
     pD -> size = 0;
@@ -54,7 +66,7 @@ Entry newEntry(char* key, char* value) {
 
     return entry;
 }
-
+ 
 //frees the variables of Entry and sets it to NULL
 void freeEntry(Entry* pE) {
     if (pE -> key != NULL) {
@@ -67,6 +79,7 @@ void freeEntry(Entry* pE) {
         pE -> value = NULL;
     }
 
+    free(pE);
     pE = NULL;
 }
 
@@ -89,8 +102,24 @@ void insert(Dictionary D, char* key, char* value) {
     int index = hash(D, key);
 
     if (D -> table[index] == NULL) {
-
+        List list = make_list();
+        Entry entry = newEntry(key, value);
+        add(list, 0, entry);
+        D -> table[index] = list;
+        D -> size++;
+    } else {
+        for (int i = 0; i < D -> table[index] -> size; i++) {
+            Entry currentEntry = (Entry)get(D -> table[index], i);
+            if (strcmp(currentEntry -> key, key) == 0) {
+                currentEntry -> value = value;
+                return;
+            }
+        }
     }
+
+    Entry entry = newEntry(key, value);
+    add(D -> table[index], 0, entry);
+    D -> size++;
 }
 
 //returns the value in the Dictionary associated with key
