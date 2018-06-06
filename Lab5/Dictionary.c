@@ -124,7 +124,18 @@ void insert(Dictionary D, char* key, char* value) {
 
 //returns the value in the Dictionary associated with key
 char* lookup(Dictionary D, char* key) {
-
+    int index = hash(D, key);
+    if (D -> table[index] == NULL) {
+        return NULL;
+    } else {
+        for (int i = 0; i < D -> table[index] -> size; i++) {
+            Entry entry = (Entry)get(D -> table[index], i);
+            if (strcmp(entry -> key, key) == 0) {
+                return entry -> value;
+            }
+        }
+    }
+    return NULL;
 }
 
 //deletes the Entry associated with the key
