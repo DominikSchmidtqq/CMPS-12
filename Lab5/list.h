@@ -34,7 +34,7 @@ void free_list(List* list);
 void add(List* list, int index, void* data);
 void* get(List* list, int index);
 void set(List* list, int index, void* data);
-
+void remove_node(List* list, int index);
 
 #endif
 

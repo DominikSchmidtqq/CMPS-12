@@ -140,12 +140,43 @@ char* lookup(Dictionary D, char* key) {
 
 //deletes the Entry associated with the key
 void delete(Dictionary D, char* key) {
-
+    int index = hash(D, key);
+    if (D -> table[index] == NULL) {
+        return;
+    } else {
+        for (int i = 0; i < D -> table[index] -> size; i++) {
+            Entry entry = (Entry)get(D -> table[index], i);
+            if (strcmp(entry -> key, key) == 0) {
+                void* node = get(D -> table[index], i);
+                free(node);
+                remove_node(D -> table[index], i);
+                D -> table[index] -> size--;
+            }
+        }
+    }
 }
 
 //removes all Entries from the Dictionary
 void makeEmpty(Dictionary D) {
-
+    if ((D != NULL) && (D -> table != NULL)) {
+        for (int i = 0; i < D -> tableSize; i++) {
+            if (D -> table[i] != NULL) {
+                for (int j = 0; j < D -> table[i] -> size; j++) {
+                    Entry entry = (Entry)get(D -> table[i], j);
+                    if (entry != NULL) {
+                        free(&entry);
+                        entry = NULL;
+                    }
+                    remove_node(D -> table[i], j);
+                }
+                free(D -> table[i]);
+                D -> table[i] = NULL;
+            }
+        }
+        free(D -> table[i]);
+        D -> table = NULL;
+    }
+    D -> size = 0;
 }
 
 //prints the contents of the Dictionary into a file
@@ -153,7 +184,7 @@ void printDictionary(FILE* out, Dictionary D) {
     for (int i = 0; i < D -> tableSize; i++) {
         if (D -> table[i] != NULL) {
             for (int j = 0; j < D  -> table[i] -> size; j++) {
-                fprintf(out, "Key=%s Value=%s\n", (Entry) get(D->table[i], j)->key, (Entry) get(D->table[i], j)->value);
+                fprintf(out, "Key=%s Value=%s\n", (Entry)get(D->table[i], j) -> key, (Entry)get(D->table[i], j) -> value);
             }
         }
     }

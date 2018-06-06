@@ -60,6 +60,29 @@ void* get(List* list, int index){
 	return current->data;
 }
 
+void remove_node(List* list, int index){
+	
+	
+	if (index == 0){
+		Node* to_remove = list->head;
+		list->head = list->head->next;
+
+		free(to_remove);
+	}
+	else {
+		Node* current = list->head;
+		
+		while (index > 1){
+			current = current->next;
+			index--;
+		}
+		Node* to_remove = current->next;
+		current->next = current->next->next;
+		free(to_remove);
+	}
+	list->size--;
+}
+
 void set(List* list, int index, void* data){
 	Node* current = list->head;
 	

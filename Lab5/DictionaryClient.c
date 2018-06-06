@@ -11,7 +11,7 @@
 #define MAX_LEN 180
 
 int main(int argc, char* argv[]){
-   Dictionary A = newDictionary(2000);
+   Dictionary A = newDictionary(101);
    char* k;
    char* v;
    char* word1[] = {"one","two","three","four","five","six","seven"};

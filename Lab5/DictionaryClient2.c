@@ -11,7 +11,7 @@
 #define MAX_LEN 180
 
 int main(int argc, char* argv[]){
-   Dictionary A = newDictionary(2000);
+   Dictionary A = newDictionary(101);
    FILE* in = fopen("DictionaryClient2.c", "r");
    FILE* out = fopen("DictionaryClient2-out", "w");
    char* key;
