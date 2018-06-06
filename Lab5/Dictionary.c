@@ -4,13 +4,18 @@
 #include "list.h"
 #include <string.h>
 
+//type definition for Dictionary
 typedef struct DictionaryObj {
+    //includes integers storing the size of the internal table and the number of key/value pairs
+    //and an array of linked lists that stores Entries
     int  tableSize;
     int size;
     List** table;
 } DictionaryObj;
 
+//type  definition of Entry
 typedef struct EntryObj {
+    //includes Strings storing the key and value
     char* key;
     char* value;
 } EntryObj;
@@ -26,6 +31,7 @@ typedef struct EntryObj* Entry;
 
 //constructor for Entry, allocates memory and initializes it's variables
 Entry newEntry(char* key, char* value) {
+    //allocates memory for the Entry and sets the key and value pointers to the arguments
     Entry entry = malloc(sizeof(Entry));
     entry -> key = key;
     entry -> value = value;
@@ -35,26 +41,33 @@ Entry newEntry(char* key, char* value) {
 
 //frees the variables of Entry and sets it to NULL
 void freeEntry(Entry* pE) {
+    //sets entry to the passed Entry object pointer
     Entry entry = (*pE);
+
     if (entry -> key != NULL) {
-        //free(entry -> key);
+        //if the key of the entry is not NULL, frees the key of the entry and sets the key to NULL
+        free(entry -> key);
         entry -> key = NULL;
     }
 
     if (entry -> value != NULL) {
-        //free(entry -> value);
+        //if the value of the entry is not NULL, frees the value of the entry and sets the value to NULL
+        free(entry -> value);
         entry -> value = NULL;
     }
 
+    //frees the entry and sets it to NULL
     free(entry);
     entry = NULL;
 }
 
 //constructor for Dictionary, allocates memory and initializes it's variables
 Dictionary newDictionary(int tableSize) {
+    //allocates memory for a Dictionary, sets the tableSize and size pointers of the Dictionary to the arguments
     Dictionary dictionary = malloc(sizeof(DictionaryObj*));
     dictionary -> tableSize = tableSize;
     dictionary -> size = 0;
+    //allocates memory for an array of type List of size tableSize and sets the table pointer of Dictionary to the array
     dictionary -> table = calloc(tableSize, sizeof(List*));
 
     return dictionary;
@@ -63,6 +76,7 @@ Dictionary newDictionary(int tableSize) {
 //frees the Dictionary, first frees the internal table, then resets all variables
 // and sets the Dictionary to NULL
 void freeDictionary(Dictionary* pD) {
+    //
     Dictionary dictionary = (*pD);
 
     if(dictionary != NULL) {
