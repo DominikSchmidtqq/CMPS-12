@@ -29,4 +29,4 @@
 * This assignment implements the Tracery grammar with linked lists to recursively generate text
 
 ## Lab 5
-*
+* In this lab we're making hashtables in C. Now that Lab 4 has given us a working linked list in C, we can implement a hash table.  
